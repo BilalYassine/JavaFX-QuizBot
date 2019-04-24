@@ -2,10 +2,12 @@ package application;
 
 
     
+import java.io.File;
 import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +25,7 @@ public class GUIHomeController extends Scene {
     public GUIHomeController(Parent root,Stage Primary, List<Scene> sceneList) {
       super(root,800,600);
       BorderPane parent = (BorderPane)root;
+      this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
       
       HBox titleBox = new HBox(10);
       Label title = new Label("Quiz Generator!");
@@ -38,9 +41,15 @@ public class GUIHomeController extends Scene {
       quizButton.setOnAction(e ->Primary.setScene(sceneList.get(1)));
       quizButton.setPrefSize(100,100);
       
+      final FileChooser fileChooser = new FileChooser();
       Button loadQuiz = new Button("Load Quiz");
       loadQuiz.setPrefSize(100,100);
-      
+      loadQuiz.setOnAction(e -> {
+        File file = fileChooser.showOpenDialog(Primary);
+        if (file != null) {
+            System.out.println("NOT NULL");
+        }
+      });
       Button addQuestionButton = new Button("Add Question");
       addQuestionButton.setOnAction(e ->Primary.setScene(sceneList.get(2)));
       addQuestionButton.setPrefSize(100,100);
