@@ -20,4 +20,17 @@
  -fx-font-family: "Arial Black";
  -fx-fill: #818181;
  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+
+#question {
+ -fx-font-size: 25px;
+ -fx-font-family: "Arial Black";
+ -fx-fill: #818181;
+ -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
+#answers {
+ -fx-font-size: 10px;
+ -fx-font-family: "Arial Black";
+ -fx-fill: #818181;
+ -fx-background-insets: 1 -20 -1 -20, 0, 1, 2;
 } 
