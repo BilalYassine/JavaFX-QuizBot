@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 public class GUIQuizController extends Scene {
     public GUIQuizController(Parent root,Stage Primary, List<Scene> sceneList) {
       super(root,800,600);
+      //Primary.setTitle("Quiz Time");
       
       Button button = new Button("Home");
       ((BorderPane) root).setCenter(button);

@@ -15,6 +15,7 @@ public class GUIMaster extends Application {
         BorderPane root2 = new BorderPane();
         BorderPane root3 = new BorderPane();
         BorderPane root4 = new BorderPane();
+        BorderPane root5 = new BorderPane();
         
         ArrayList<Scene> x = new ArrayList<Scene>();
         GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,x);
@@ -25,7 +26,9 @@ public class GUIMaster extends Application {
         x.add(GUIAddQuestion);
         GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,x);
         x.add(GUIQuizEnd);
-
+        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,x);
+        x.add(GUITopicSelect);
+        
         primaryStage.setScene(GUIHomeController);
         primaryStage.show();
       } catch(Exception e) {

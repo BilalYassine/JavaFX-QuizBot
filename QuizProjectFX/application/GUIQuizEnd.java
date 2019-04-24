@@ -15,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 public class GUIQuizEnd extends Scene {
     public GUIQuizEnd(Parent root,Stage Primary, List<Scene> sceneList) {
       super(root,800,600);
+      //Primary.setTitle("Results");
       BorderPane parent = (BorderPane)root;
       
       Label title = new Label("End of Quiz");

@@ -20,13 +20,14 @@ import javafx.scene.layout.HBox;
 public class GUIHomeController extends Scene {
     public GUIHomeController(Parent root,Stage Primary, List<Scene> sceneList) {
       super(root,800,600);
+      //Primary.setTitle("Home");
       BorderPane parent = (BorderPane)root;
       
       parent.setPadding(new Insets(10, 10, 10, 10));
       HBox buttons = new HBox(10);
       buttons.setAlignment(Pos.CENTER);
       Button quizButton = new Button("Take Quiz");
-      quizButton.setOnAction(e ->Primary.setScene(sceneList.get(1)));
+      quizButton.setOnAction(e ->Primary.setScene(sceneList.get(4)));
       quizButton.setPrefSize(100,100);
       
       Button loadQuiz = new Button("Load Quiz");
