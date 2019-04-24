@@ -16,4 +16,13 @@ public class FileSystem
             // openFile(file); calls appropriate file import methods/class
         }
     }
+    
+    public static void loadImage(Stage stage)
+    {
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null)
+        {
+            // openFile(file); calls appropriate methods for images
+        }
+    }
 }
