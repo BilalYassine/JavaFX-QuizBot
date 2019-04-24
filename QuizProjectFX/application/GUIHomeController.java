@@ -2,6 +2,7 @@ package application;
 
 
     
+import java.io.File;
 import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -31,6 +32,13 @@ public class GUIHomeController extends Scene {
       
       Button loadQuiz = new Button("Load Quiz");
       loadQuiz.setPrefSize(100,100);
+      loadQuiz.setOnAction(
+              new EventHandler<ActionEvent>() {
+                  @Override
+                  public void handle(final ActionEvent e) {
+                      FileSystem.loadFile(Primary);
+                  }
+              });
       
       Button addQuestionButton = new Button("Add Question");
       addQuestionButton.setOnAction(e ->Primary.setScene(sceneList.get(2)));
