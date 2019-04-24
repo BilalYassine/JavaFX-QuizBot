@@ -15,12 +15,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 
 
 public class GUIHomeController extends Scene {
     public GUIHomeController(Parent root,Stage Primary, List<Scene> sceneList) {
       super(root,800,600);
       BorderPane parent = (BorderPane)root;
+      
+      HBox titleBox = new HBox(10);
+      Label title = new Label("Quiz Generator!");
+      title.setFont(Font.font("Cambria", 50));
+      titleBox.setAlignment(Pos.CENTER);
+      titleBox.getChildren().addAll(title);
+      parent.setCenter(titleBox);
       
       parent.setPadding(new Insets(10, 10, 10, 10));
       HBox buttons = new HBox(10);
