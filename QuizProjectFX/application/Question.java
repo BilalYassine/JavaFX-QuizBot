@@ -23,7 +23,7 @@ public class Question {
       this.questionText = question;
     }
   }
-  
+  //yo
   public void setQuestionTopic(String topic) {
     if(topic != null) {
       this.topic = topic;
