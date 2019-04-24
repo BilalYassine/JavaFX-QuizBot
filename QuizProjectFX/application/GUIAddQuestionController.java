@@ -2,9 +2,12 @@ package application;
 
 
     
+import java.io.File;
 import java.util.List;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,12 +17,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 
 public class GUIAddQuestionController extends Scene {
     public GUIAddQuestionController(Parent root,Stage Primary, List<Scene> sceneList) {
       super(root,800,600);
       BorderPane parent = (BorderPane)root;
+      this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+      
       parent.setPadding(new Insets(10, 10, 10, 10));
       HBox bottom = new HBox(8);
       
@@ -29,6 +35,16 @@ public class GUIAddQuestionController extends Scene {
       bottom.getChildren().addAll(returnButton,saveButton,addButton);
       
       parent.setBottom(bottom);
+      
+      final FileChooser fileChooser = new FileChooser();
+      Button addImage = new Button("Add Image");
+      parent.setRight(addImage);
+      addImage.setOnAction(e -> {
+        File file = fileChooser.showOpenDialog(Primary);
+        if (file != null) {
+            System.out.println("NOT NULL");
+        }
+      });
       
       Label questionLabel = new Label("Question");
       TextField questionText = new TextField();
@@ -65,6 +81,13 @@ public class GUIAddQuestionController extends Scene {
       TextField answerText4 = new TextField();
       HBox answer4 = new HBox(8);
       answer4.getChildren().addAll(answerLabel4,answerText4);
+      
+      HBox titleBox = new HBox(10);
+      Label title = new Label("Add a Question");
+      title.setId("title-text");
+      titleBox.setAlignment(Pos.CENTER);
+      titleBox.getChildren().addAll(title);
+      parent.setTop(titleBox);
       
       choices.getChildren().addAll(topics,correct,answer1,answer2,answer3,answer4);
       parent.setCenter(choices);
