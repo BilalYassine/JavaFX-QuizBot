@@ -44,7 +44,7 @@ public class GUIHomeController extends Scene
 
         Button loadQuiz = new Button("Load Quiz");
         loadQuiz.setPrefSize(100, 100);
-        loadQuiz.setOnAction(EventHandler -> {
+        loadQuiz.setOnAction(e -> {
             FileSystem.loadFile(Primary);
         });
 
