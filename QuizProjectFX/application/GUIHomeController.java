@@ -29,9 +29,9 @@ public class GUIHomeController extends Scene {
       
       HBox titleBox = new HBox(10);
       Label title = new Label("Quiz Generator!");
-      title.setFont(Font.font("Cambria", 50));
-      titleBox.setAlignment(Pos.CENTER);
+      title.setId("title-text");
       titleBox.getChildren().addAll(title);
+      titleBox.setAlignment(Pos.CENTER);
       parent.setCenter(titleBox);
       
       parent.setPadding(new Insets(10, 10, 10, 10));
