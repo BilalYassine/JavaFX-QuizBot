@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class GUIMaster extends Application {
 
+	static QuestionTable table;
+	
 	@Override
 	public void start(Stage primaryStage) {
 	  try {
@@ -36,6 +38,8 @@ public class GUIMaster extends Application {
       }
   }
 	public static void main(String[] args) {
+		table = new QuestionTable();
+		
 		launch(args);
 	}
 }

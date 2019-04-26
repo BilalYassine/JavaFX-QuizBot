@@ -34,12 +34,12 @@ public class GUIHomeController extends Scene
         titleBox.getChildren().addAll(title);
         titleBox.setAlignment(Pos.CENTER);
         parent.setCenter(titleBox);
-
+        
         parent.setPadding(new Insets(10, 10, 10, 10));
         HBox buttons = new HBox(10);
         buttons.setAlignment(Pos.CENTER);
         Button quizButton = new Button("Take Quiz");
-        quizButton.setOnAction(e -> Primary.setScene(sceneList.get(1)));
+        quizButton.setOnAction(e -> Primary.setScene(sceneList.get(4)));
         quizButton.setPrefSize(100, 100);
 
         Button loadQuiz = new Button("Load Quiz");
