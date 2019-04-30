@@ -54,18 +54,18 @@ public class FileManager {
             Map.Entry pair = (Entry) itr1.next(); 
             questionCounter++;
             Question question = new Question();
-            System.out.println("Question " + questionCounter + ": ");
+//            System.out.println("Question " + questionCounter + ": ");
             if(pair.getKey().toString().contentEquals("image")) {
-            	System.out.println("  The image is : " + pair.getValue());
+//            	System.out.println("  The image is : " + pair.getValue());
             	question.setImage(pair.getValue().toString());
             }
             while (itr1.hasNext()) { 
                 Map.Entry pair2 = (Entry) itr1.next(); 
                 if(pair2.getKey().toString().contentEquals("meta-data")) {
-                	System.out.println("  The meta data is : " + pair2.getValue());
+//                	System.out.println("  The meta data is : " + pair2.getValue());
                 }
                 if(pair2.getKey().toString().contentEquals("questionText")) {
-                	System.out.println("  The question text is : " + pair2.getValue());
+//                	System.out.println("  The question text is : " + pair2.getValue());
                 	String questionText = pair2.getValue().toString();
                 	questionsText.add(questionText);
 //                    System.out.println("Current Questions: " + questionsText);
@@ -74,20 +74,20 @@ public class FileManager {
                     quizTable.AddQuestion(question);
                 }
                 if(pair2.getKey().toString().contentEquals("topic")) {
-                	System.out.println("  The topic is : " + pair2.getValue());
+//                	System.out.println("  The topic is : " + pair2.getValue());
                 	String topicText = pair2.getValue().toString();
                 	topics.add(topicText);
                 	question.setQuestionTopic(topicText);
                 }
                 if(pair2.getKey().toString().contentEquals("choiceArray")) {
                 	String[] answerArray = pair2.getValue().toString().replace("[", "").replace("\"", "").replace("{",  "").replace("]",  "").replace("$", "").replace("}", "").split(",");
-                	System.out.println("  The array of answers is : ");
+//                	System.out.println("  The array of answers is : ");
                 	for(int i = 0; i < answerArray.length; i++) {
                 		String newString = new String();
                 		if(i%2 == 0) {
                 			newString = answerArray[i] + " " + answerArray[i+1];
                 		}
-                		System.out.println("          " + newString);
+//                		System.out.println("          " + newString);
                 		question.setAnswers(answerArray);
                 	}
                 }
