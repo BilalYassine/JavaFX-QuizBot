@@ -35,4 +35,7 @@ public class Question {
     Image imageSet = new Image(imageFileName);
     this.questionImage = new ImageView(imageSet);
   }
+  public void setAnswers(List<Answer> newAnswers) {
+    this.answers = newAnswers;
+  }
 }
