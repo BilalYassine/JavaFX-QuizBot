@@ -84,12 +84,11 @@ final class FileManager {
                 // The following if statement checks the JSON file for the answers to the question
                 if(pair2.getKey().toString().contentEquals("choiceArray")) {
                 	// Sets the answers for the Question by parsing the JSON file into an array of Strings
-                	String[] answerArray = pair2.getValue().toString().replace("[", "").replace("\"", "").replace("{",  "").replace("]",  "").replace("$", "").replace("}", "").split(",");
+                	String[] answerArray = pair2.getValue().toString().replace("[", "").replace("\"", "").replace("{",  "").replace("]",  "").replace("$", "").replace("}", "").split("choice");
                 	ArrayList<Answer> answerList = new ArrayList<Answer>();
                 	for(int i = 0; i < answerArray.length; i++) {
-                		String newString = new String();
                 		if(i%2 == 0) {
-                			newString = answerArray[i] + " " + answerArray[i+1];
+                			System.out.println();
                 			if(answerArray[i+1].contains("T")) {
                 				Answer answer = new Answer(answerArray[i], true);
                 				answerList.add(answer);
@@ -102,8 +101,8 @@ final class FileManager {
                 	}
             		question.setAnswers(answerList);
                 }
+                
                 String[] stringArray = pair2.getValue().toString().replace("[", "").replace("\"",  "").replace("]",  "").split(",");
-
             } 
         } 
     }
