@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -15,11 +16,7 @@ import org.json.simple.parser.*;
 
 final class FileManager {
 	
-	private static QuestionTable quizTable = new QuestionTable();
-	
-	private FileManager() {
-		quizTable = new QuestionTable(); // A hash table filled with all of the questions
-	}
+	public static QuestionTable quizTable = new QuestionTable();
     
     /**
      * Takes in a file path for a json file and builds the appropriate Questions, Answers, and QuestionTable
@@ -33,77 +30,41 @@ final class FileManager {
     	 // parsing file
         Object obj = new JSONParser().parse(new FileReader(jsonFilepath));
 
-        // typecasting obj to JSONObject 
+        // Cast Object to JSONObject 
         JSONObject jo = (JSONObject) obj;
         
-        // getting packages 
+        // get question array
         JSONArray ja = (JSONArray) jo.get("questionArray"); 
-          
-        // iterating packages 
-        Iterator itr2 = ja.iterator();
         
-        int questionCounter = 0;
-        ArrayList<String> questionsText = new ArrayList<String>();
-        ArrayList<String> topics = new ArrayList<String>();
-        ArrayList<Question> questions = new ArrayList<Question>();
-          
-        while (itr2.hasNext())  
-        { 
-            Iterator itr1 = ((Map) itr2.next()).entrySet().iterator(); 
-            Map.Entry pair = (Entry) itr1.next(); 
-            questionCounter++;
+        // Iterate through each question 
+        for (Object q : ja)
+        {
+            JSONObject jQ = (JSONObject) q;
             Question question = new Question();
-            // The following if statement checks the JSON file for the image to the question
-            if(pair.getKey().toString().contentEquals("image")) {
-            	// Sets the image for the Question
-            	question.setImage(pair.getValue().toString());
-            }
-            while (itr1.hasNext()) { 
-                Map.Entry pair2 = (Entry) itr1.next(); 
-                // The following if statement checks the JSON file for the meta-data to the question
-                if(pair2.getKey().toString().contentEquals("meta-data")) {
-                	// Sets the meta-data for the Question
-                	question.setMetaData(pair.getValue().toString());
-                }
-                // The following if statement checks the JSON file for the actual text of the question
-                if(pair2.getKey().toString().contentEquals("questionText")) {
-                	// Sets the text of the question for the Question
-                	String questionText = pair2.getValue().toString();
-                	questionsText.add(questionText);
-                    question.setQuestion(questionText);
-                    // Adds the final question to the Question Table
-                    quizTable.AddQuestion(question);
-                }
-                // The following if statement checks the JSON file for the topic of the question
-                if(pair2.getKey().toString().contentEquals("topic")) {
-                	// Sets the topic for the Question
-                	String topicText = pair2.getValue().toString();
-                	topics.add(topicText);
-                	question.setQuestionTopic(topicText);
-                }
-                // The following if statement checks the JSON file for the answers to the question
-                if(pair2.getKey().toString().contentEquals("choiceArray")) {
-                	// Sets the answers for the Question by parsing the JSON file into an array of Strings
-                	String[] answerArray = pair2.getValue().toString().replace("[", "").replace("\"", "").replace("{",  "").replace("]",  "").replace("$", "").replace("}", "").split("choice");
-                	ArrayList<Answer> answerList = new ArrayList<Answer>();
-                	for(int i = 0; i < answerArray.length; i++) {
-                		if(i%2 == 0) {
-                			System.out.println();
-                			if(answerArray[i+1].contains("T")) {
-                				Answer answer = new Answer(answerArray[i], true);
-                				answerList.add(answer);
-                			}
-                			else {
-                				Answer answer = new Answer(answerArray[i], false);
-                				answerList.add(answer);
-                			}
-                		}
-                	}
-            		question.setAnswers(answerList);
-                }
+            List<Answer> answerList = new ArrayList<>();
+            
+            question.setMetaData((String) jQ.get("meta-data"));
+            question.setQuestion((String) jQ.get("questionText"));
+            question.setQuestionTopic((String) jQ.get("topic"));
+            question.setImage((String) jQ.get("meta-data"));
+            
+            JSONArray choices = (JSONArray) jQ.get("choiceArray");
+            
+            // Iterate through each answer in question
+            for (Object choice : choices)
+            {
+                JSONObject jChoice = (JSONObject) choice;
                 
-                String[] stringArray = pair2.getValue().toString().replace("[", "").replace("\"",  "").replace("]",  "").split(",");
-            } 
-        } 
+                //if "T" set true, else false
+                Boolean aCorrect = (jChoice.get("isCorrect")).equals("T") ? true : false;
+                String aText = (String) jChoice.get("choice");
+                answerList.add( new Answer(aText, aCorrect) );
+            }
+            
+            // Add compiled question to quizTable
+            question.setAnswers(answerList);
+            quizTable.AddQuestion(question);
+            
+        }
     }
 }
