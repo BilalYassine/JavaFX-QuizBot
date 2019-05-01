@@ -32,7 +32,8 @@ public class Question {
   }
   
   public void setImage(String imageFileName) {
-    Image imageSet = new Image(imageFileName);
+    String path = "images/"+imageFileName;
+    Image imageSet = new Image(path);
     this.questionImage = new ImageView(imageSet);
   }
   public void setAnswers(List<Answer> newAnswers) {
