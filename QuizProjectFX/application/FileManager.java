@@ -22,8 +22,7 @@ public class FileManager {
 	}
     
     /**
-     * Takes in a file path for a json file and builds the
-     * package dependency graph from it. 
+     * Takes in a file path for a json file and builds the appropriate Questions, Answers, and QuestionTable
      * 
      * @param jsonFilepath the name of json data file with package dependency information
      * @throws FileNotFoundException if file path is incorrect
@@ -54,34 +53,38 @@ public class FileManager {
             Map.Entry pair = (Entry) itr1.next(); 
             questionCounter++;
             Question question = new Question();
-//            System.out.println("Question " + questionCounter + ": ");
+            // The following if statement checks the JSON file for the image to the question
             if(pair.getKey().toString().contentEquals("image")) {
-//            	System.out.println("  The image is : " + pair.getValue());
+            	// Sets the image for the Question
             	question.setImage(pair.getValue().toString());
             }
             while (itr1.hasNext()) { 
                 Map.Entry pair2 = (Entry) itr1.next(); 
+                // The following if statement checks the JSON file for the meta-data to the question
                 if(pair2.getKey().toString().contentEquals("meta-data")) {
-//                	System.out.println("  The meta data is : " + pair2.getValue());
+                	// Sets the meta-data for the Question
+                	question.setMetaData(pair.getValue().toString());
                 }
+                // The following if statement checks the JSON file for the actual text of the question
                 if(pair2.getKey().toString().contentEquals("questionText")) {
-//                	System.out.println("  The question text is : " + pair2.getValue());
+                	// Sets the text of the question for the Question
                 	String questionText = pair2.getValue().toString();
                 	questionsText.add(questionText);
-//                    System.out.println("Current Questions: " + questionsText);
-//                    System.out.println("Current Topics: " + topics);
                     question.setQuestion(questionText);
+                    // Adds the final question to the Question Table
                     quizTable.AddQuestion(question);
                 }
+                // The following if statement checks the JSON file for the topic of the question
                 if(pair2.getKey().toString().contentEquals("topic")) {
-//                	System.out.println("  The topic is : " + pair2.getValue());
+                	// Sets the topic for the Question
                 	String topicText = pair2.getValue().toString();
                 	topics.add(topicText);
                 	question.setQuestionTopic(topicText);
                 }
+                // The following if statement checks the JSON file for the answers to the question
                 if(pair2.getKey().toString().contentEquals("choiceArray")) {
+                	// Sets the answers for the Question by parsing the JSON file into an array of Strings
                 	String[] answerArray = pair2.getValue().toString().replace("[", "").replace("\"", "").replace("{",  "").replace("]",  "").replace("$", "").replace("}", "").split(",");
-//                	System.out.println("  The array of answers is : ");
                 	ArrayList<Answer> answerList = new ArrayList<Answer>();
                 	for(int i = 0; i < answerArray.length; i++) {
                 		String newString = new String();
@@ -96,13 +99,10 @@ public class FileManager {
                 				answerList.add(answer);
                 			}
                 		}
-//                		System.out.println("          " + newString);
                 	}
             		question.setAnswers(answerList);
                 }
                 String[] stringArray = pair2.getValue().toString().replace("[", "").replace("\"",  "").replace("]",  "").split(",");
-                for(String vertex2 : stringArray) {
-                }
             } 
         } 
     }
