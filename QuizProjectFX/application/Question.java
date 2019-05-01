@@ -40,9 +40,16 @@ public class Question {
   }
   
   public void setImage(String imageFileName) {
-    String path = "images/"+imageFileName;
-    Image imageSet = new Image(path);
-    this.questionImage = new ImageView(imageSet);
+    try
+    {
+        String path = "images/"+imageFileName;
+        Image imageSet = new Image(path);
+        this.questionImage = new ImageView(imageSet);
+    } catch (Exception e)
+    {
+        // invalid or empty image
+    }
+    
   }
   public void setAnswers(List<Answer> newAnswers) {
     this.answers = newAnswers;
