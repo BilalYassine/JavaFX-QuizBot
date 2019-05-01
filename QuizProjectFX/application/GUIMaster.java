@@ -24,7 +24,7 @@ public class GUIMaster extends Application {
         x.add(GUIHomeController);
         GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,x);
         x.add(GUIQuizController);
-        GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,x);
+        GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,x, table);
         x.add(GUIAddQuestion);
         GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,x);
         x.add(GUIQuizEnd);

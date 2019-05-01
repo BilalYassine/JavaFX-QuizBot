@@ -2,7 +2,6 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
