@@ -14,6 +14,7 @@ public class QuestionTable {
 	
 	//Add a questions
 	public void AddQuestion(Question q) {
+	    
 		for (int i=0; i<table.size();i++) {
 			if (table.get(i).get(0).topic.equals(q.topic)) {
 				table.get(i).add(q);
@@ -21,7 +22,7 @@ public class QuestionTable {
 			}
 		}
 		table.add(new ArrayList<Question>());
-		table.get(table.size()).add(q);
+		table.get(table.size()-1).add(q);     //size -1 
 	}
 	
 	//Get a list of topics

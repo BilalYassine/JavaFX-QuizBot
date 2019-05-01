@@ -15,7 +15,7 @@ import org.json.simple.parser.*;
 
 final class FileManager {
 	
-	private static QuestionTable quizTable;
+	private static QuestionTable quizTable = new QuestionTable();
 	
 	private FileManager() {
 		quizTable = new QuestionTable(); // A hash table filled with all of the questions
