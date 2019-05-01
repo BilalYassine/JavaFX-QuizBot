@@ -82,14 +82,23 @@ public class FileManager {
                 if(pair2.getKey().toString().contentEquals("choiceArray")) {
                 	String[] answerArray = pair2.getValue().toString().replace("[", "").replace("\"", "").replace("{",  "").replace("]",  "").replace("$", "").replace("}", "").split(",");
 //                	System.out.println("  The array of answers is : ");
+                	ArrayList<Answer> answerList = new ArrayList<Answer>();
                 	for(int i = 0; i < answerArray.length; i++) {
                 		String newString = new String();
                 		if(i%2 == 0) {
                 			newString = answerArray[i] + " " + answerArray[i+1];
+                			if(answerArray[i+1].contains("T")) {
+                				Answer answer = new Answer(answerArray[i], true);
+                				answerList.add(answer);
+                			}
+                			else {
+                				Answer answer = new Answer(answerArray[i], false);
+                				answerList.add(answer);
+                			}
                 		}
 //                		System.out.println("          " + newString);
-                		question.setAnswers(answerArray);
                 	}
+            		question.setAnswers(answerList);
                 }
                 String[] stringArray = pair2.getValue().toString().replace("[", "").replace("\"",  "").replace("]",  "").split(",");
                 for(String vertex2 : stringArray) {
