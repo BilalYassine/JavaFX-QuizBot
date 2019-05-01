@@ -2,7 +2,6 @@ package application;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -47,7 +46,9 @@ public class Question {
         this.questionImage = new ImageView(imageSet);
     } catch (Exception e)
     {
-        // invalid or empty image
+        // set default image path if error is thrown
+        Image imageSet = new Image("images/default.png");
+        this.questionImage = new ImageView(imageSet);
     }
     
   }

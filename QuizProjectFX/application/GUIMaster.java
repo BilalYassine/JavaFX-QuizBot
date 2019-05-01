@@ -18,18 +18,22 @@ public class GUIMaster extends Application {
         BorderPane root3 = new BorderPane();
         BorderPane root4 = new BorderPane();
         BorderPane root5 = new BorderPane();
+        // GUI List is a list of all the GUI 1 = Home, 2 = Quiz, 3 = Add Quesiton, 4 = Quiz end, 5 = Quiz Topic Selection
+        ArrayList<Scene> GUIList = new ArrayList<Scene>();
+        GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,GUIList);
+        GUIList.add(GUIHomeController);
         
-        ArrayList<Scene> x = new ArrayList<Scene>();
-        GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,x);
-        x.add(GUIHomeController);
-        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,x);
-        x.add(GUIQuizController);
-        GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,x,table);
-        x.add(GUIAddQuestion);
-        GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,x);
-        x.add(GUIQuizEnd);
-        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,x);
-        x.add(GUITopicSelect);
+        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList);
+        GUIList.add(GUIQuizController);
+        
+        GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,GUIList, table);
+        GUIList.add(GUIAddQuestion);
+        
+        GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,GUIList);
+        GUIList.add(GUIQuizEnd);
+        
+        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,GUIList);
+        GUIList.add(GUITopicSelect);
         
         primaryStage.setScene(GUIHomeController);
         primaryStage.show();
