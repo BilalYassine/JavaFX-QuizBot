@@ -15,7 +15,7 @@ import org.json.simple.parser.*;
 
 public class FileManager {
 	
-	private QuestionTable quizTable;
+	private static QuestionTable quizTable;
 	
 	public FileManager() {
 		quizTable = new QuestionTable(); // A hash table filled with all of the questions
@@ -29,7 +29,7 @@ public class FileManager {
      * @throws IOException if the give file cannot be read
      * @throws ParseException if the given json cannot be parsed 
      */
-    public void parseJSON(File jsonFilepath) throws FileNotFoundException, IOException, ParseException {
+    public static void parseJSON(File jsonFilepath) throws FileNotFoundException, IOException, ParseException {
     	 // parsing file
         Object obj = new JSONParser().parse(new FileReader(jsonFilepath));
 
