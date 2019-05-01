@@ -25,7 +25,7 @@ public class QuestionTable
         if (table.containsKey(q.topic))     // If table contains topic, add question to that ArrayList
         {
             table.get(q.topic).add(q);
-        } else                              // If table doesn't, add new ArrayList with topic and question in it
+        } else                              // If table doesn't contain topic, add new ArrayList with topic and question in it
         {
             List<Question> newTopicList = new ArrayList<>();
             newTopicList.add(q);

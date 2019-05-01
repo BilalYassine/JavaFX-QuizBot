@@ -36,13 +36,14 @@ final class FileManager {
         // get question array
         JSONArray ja = (JSONArray) jo.get("questionArray"); 
         
-        // Iterate through each question 
+        // Iterate through each question in ja
         for (Object q : ja)
         {
             JSONObject jQ = (JSONObject) q;
             Question question = new Question();
             List<Answer> answerList = new ArrayList<>();
             
+            // Set Question Data
             question.setMetaData((String) jQ.get("meta-data"));
             question.setQuestion((String) jQ.get("questionText"));
             question.setQuestionTopic((String) jQ.get("topic"));
