@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
 
 public class GUIQuizEnd extends Scene {
@@ -19,6 +20,10 @@ public class GUIQuizEnd extends Scene {
       BorderPane parent = (BorderPane)root;
       
       Label title = new Label("End of Quiz");
+      
+      HBox center = new HBox(10);
+      Label text = new Label("You got ");
+      Label correct = new Label(10 + "");
       parent.setTop(title);
       
       Button button = new Button("Home");
