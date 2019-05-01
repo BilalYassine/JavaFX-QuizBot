@@ -8,12 +8,14 @@ import javafx.scene.image.ImageView;
 
 public class Question {
   public String questionText;
+  public String metaData;
   public String topic;
   ImageView questionImage;
   List<Answer> answers;
   
   public Question() {
     questionText = "";
+    metaData = "";
     topic = "";
     questionImage = null;
     answers = new ArrayList<Answer>();   
@@ -24,7 +26,13 @@ public class Question {
       this.questionText = question;
     }
   }
-  //yo
+
+  public void setMetaData(String metaData) {
+	    if(metaData != null) {
+	      this.metaData = metaData;
+	    }
+	  }
+  
   public void setQuestionTopic(String topic) {
     if(topic != null) {
       this.topic = topic;

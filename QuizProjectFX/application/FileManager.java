@@ -13,11 +13,11 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject; 
 import org.json.simple.parser.*;
 
-public class FileManager {
+final class FileManager {
 	
 	private static QuestionTable quizTable;
 	
-	public FileManager() {
+	private FileManager() {
 		quizTable = new QuestionTable(); // A hash table filled with all of the questions
 	}
     
@@ -103,6 +103,7 @@ public class FileManager {
             		question.setAnswers(answerList);
                 }
                 String[] stringArray = pair2.getValue().toString().replace("[", "").replace("\"",  "").replace("]",  "").split(",");
+
             } 
         } 
     }
