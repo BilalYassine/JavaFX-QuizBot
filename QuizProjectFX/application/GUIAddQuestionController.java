@@ -205,14 +205,13 @@ public class GUIAddQuestionController extends Scene {
         topicText.clear();
         metaText.clear();
         questionText.clear();
-        table.AddQuestion(q);
         answerText1.clear();
         answerText2.clear();
         answerText3.clear();
         answerText4.clear();
         answerText5.clear();
-      });
-      
-      
+        table.AddQuestion(q);
+      });    
   }
 }
+
