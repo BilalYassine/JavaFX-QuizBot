@@ -52,7 +52,13 @@ public class Question {
     }
     
   }
+  
   public void setAnswers(List<Answer> newAnswers) {
     this.answers = newAnswers;
+  }
+  
+  public List<Answer> getAnswers()
+  {
+      return answers;
   }
 }

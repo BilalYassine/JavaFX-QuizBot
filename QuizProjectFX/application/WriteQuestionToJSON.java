@@ -1,3 +1,5 @@
+package application;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,7 +48,6 @@ public class WriteQuestionToJSON
         
         //Write JSON file
         try (FileWriter file = new FileWriter("C://Users//bilal//eclipse-workspace/cs400_eclipse_p4/src/writetest.json")) {
- 
             file.write(questionObject.toJSONString());
  
         } catch (IOException e) {
