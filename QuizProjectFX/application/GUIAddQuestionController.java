@@ -186,14 +186,7 @@ public class GUIAddQuestionController extends Scene {
           else
             answers.add(new Answer(answerText5.getText(),false));
         }
-        if(image.get(0)!=null) {
           q.setImage(image.get(0));
-          
-        }
-        else {
-        	image.set(0,"pp.png");
-        	q.setImage(image.get(0));
-        }
         if(answers.size()<1) {//Checks to make sure at lease one answer is entered
           alert.setHeaderText("You forgot to add an Answer");
           alert.setContentText("Ooops, please add at least one Answer");
