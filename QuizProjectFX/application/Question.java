@@ -21,7 +21,7 @@ public class Question {
   public String metaData;
   public String topic;
   ImageView questionImage;
-  List<Answer> answers;
+  public List<Answer> answers;
   String[] inputAnswers;
   
   /**
@@ -35,7 +35,18 @@ public class Question {
     topic = "";
     questionImage = null;
     inputAnswers = inputAns;
-    answers = new ArrayList<Answer>();   
+    answers = new ArrayList<Answer>();
+  }
+  
+  public Question(String q, String t, String m, String i, List<Answer> a) {
+	    questionText = q;
+	    metaData = m;
+	    topic = t;
+	    questionImage = null;
+	    setImage(i);
+	    //inputAnswers = inputAns;
+	    setAnswers(a);
+	    //answers = new ArrayList<Answer>();   
   }
   
   //Constructor for testing purposes
@@ -87,7 +98,7 @@ public class Question {
    * @param imageFileName: name of file from JSON
    */
   public void setImage(String imageFileName) {
-    String path = "images/" + imageFileName;
+    String path = "" + imageFileName;
     Image imageSet = new Image(path); // create image instance
     this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
     try
@@ -111,24 +122,5 @@ public class Question {
   public List<Answer> getAnswers()
   {
       return answers;
-  }
-  
-  /**
-   * Method that parses through the array input from the JSON
-   * parsing algorithm. Creates and enters all of the Answer
-   * instances into the answer ArrayList.
-   * @param inputAnswers: array with answers and true/false
-   */
-  public void setAnswers(String[] inputAnswers)  {
-    //parse through the given array
-    for(int i = 0; i < inputAnswers.length; i = i + 2) {
-      if(inputAnswers[i+1].equals("T")) { // check for true answers
-        isCorrect = true;
-      } else {
-        isCorrect = false;
-      }      
-      // create and add new instance of answer to arrayList
-      answers.add(new Answer(inputAnswers[i], isCorrect));
-    }
   }
 }

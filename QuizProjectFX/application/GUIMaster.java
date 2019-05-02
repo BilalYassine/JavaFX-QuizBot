@@ -20,6 +20,7 @@ public class GUIMaster extends Application {
 	public static QuestionTable table;
 	private Stage stage;
 	
+	int[] correct;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -37,7 +38,10 @@ public class GUIMaster extends Application {
         
         List<Question> qListFinal = new ArrayList<Question>();
         
-        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList,qListFinal);
+        correct = new int[1];
+        correct[0] = 0;
+        
+        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList,qListFinal, correct);
         GUIList.add(GUIQuizController);
 
         //GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList, null);
@@ -46,12 +50,10 @@ public class GUIMaster extends Application {
         GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,GUIList, table);
         GUIList.add(GUIAddQuestion);
         
-        int[] correct = new int[1];
-        correct[0] =0;
         GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,GUIList, correct);
         GUIList.add(GUIQuizEnd);
         
-        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,GUIList, table, qListFinal);
+        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,GUIList, table, qListFinal,correct);
         GUIList.add(GUITopicSelect);
         
         primaryStage.setScene(GUIHomeController);
@@ -87,18 +89,21 @@ public class GUIMaster extends Application {
 	            FileSystem.saveJSON(stage);
 	        } else if(response == cancel)
 	        {
-	            event.consume();   // consumes the cancel event so program stays running
+	            event.consume();   // consaumes the cancel event so program stays running
 	        }
 	    });
 	}
 	
 	public static void main(String[] args) {
 		table = new QuestionTable();
-		Question q = new Question("Yeller", "Yoit");
-		table.addQuestion(q);
-		table.addQuestion(new Question("Yee", "Yoit"));
-		table.addQuestion(new Question("Yo", "Yay"));
-		table.addQuestion(new Question("Yo", "Dope"));
+		List<Answer> yo = new ArrayList<Answer>();
+		yo.add(new Answer("1", false));
+		yo.add(new Answer("2", true));
+		table.addQuestion(new Question("What is life","Important", "fdasf", "pp.png", yo));
+		yo = new ArrayList<Answer>();
+		yo.add(new Answer("bread", false));
+		yo.add(new Answer("cheese", true));
+		table.addQuestion(new Question("What did you eat for breakfast","Important", "fdasf", "pp.png", yo));
 		
 		launch(args);
 	}

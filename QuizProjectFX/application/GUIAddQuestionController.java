@@ -188,7 +188,11 @@ public class GUIAddQuestionController extends Scene {
         }
         if(image.get(0)!=null) {
           q.setImage(image.get(0));
-          image.set(0,null);
+          
+        }
+        else {
+        	image.set(0,"pp.png");
+        	q.setImage(image.get(0));
         }
         if(answers.size()<1) {//Checks to make sure at lease one answer is entered
           alert.setHeaderText("You forgot to add an Answer");
@@ -202,6 +206,7 @@ public class GUIAddQuestionController extends Scene {
           alert.showAndWait();
           return;
         }
+        q.setAnswers(answers);
         topicText.clear();
         metaText.clear();
         questionText.clear();

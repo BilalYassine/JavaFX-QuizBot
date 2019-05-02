@@ -48,8 +48,10 @@ public class GUITopicSelectController extends Scene {
 	Stage Primary;
 	List<Scene> sceneList;
 	List<Question> qListFinal;
+	Parent root;
+	int[] correct;
 	
-    public GUITopicSelectController(Parent root,Stage Primary, List<Scene> sceneList, QuestionTable table, List<Question> qListFinal) {
+    public GUITopicSelectController(Parent root,Stage Primary, List<Scene> sceneList, QuestionTable table, List<Question> qListFinal, int[] correct) {
       super(root,800,600);
       
       //Set constructor variables to class variables
@@ -57,6 +59,8 @@ public class GUITopicSelectController extends Scene {
       this.sceneList = sceneList;
       this.Primary = Primary;
       this.qListFinal = qListFinal;
+      this.root = root;
+      this.correct = correct;
       
       //Primary.setTitle("Topic Select");
       BorderPane parent = (BorderPane) root;
@@ -171,6 +175,79 @@ public class GUITopicSelectController extends Scene {
 	  }
   }
   
+  public VBox updateTopics() {
+	  qListFinal.clear();
+	  checkBoxSelected.clear();
+	  
+	  VBox vbox = new VBox();
+
+      Label titleLabel = new Label("Select a Topic:");
+      titleLabel.setTranslateY(100);
+      titleLabel.setId("title-text");
+      //titleLabel.setFont(new Font("Arial", 55));
+
+      vbox.setSpacing(10);
+      vbox.getChildren().add((titleLabel));
+      vbox.setAlignment(Pos.CENTER);
+      
+      //Getting the list of topics
+      List<String> topicList = table.getTopicList();
+
+      //topicSelectBox.setTranslateY(100);
+      
+      //Sense when a topic is selected
+      //topicSelectBox.getSelectionModel().selectedItemProperty().addListener((v,oldValue,newValue) -> pickTopic());
+      
+      //vbox.getChildren().add(topicSelectBox);
+      for (int i = 0; i < topicList.size(); i++) { 
+
+          //Create a Checkbox and move it to the right spot 
+          CheckBox c = new CheckBox(topicList.get(i)); 
+          c.setTranslateY(100);
+          
+          String thisTopic = topicList.get(i);
+          
+          //Add the checkbox to the vbox
+          vbox.getChildren().add(c); 
+
+          //Set to be indeterminate 
+          c.setIndeterminate(true); 
+          
+          //Add event handler for when checked
+          
+          // create a event handler 
+          EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() { 
+
+              public void handle(ActionEvent e) 
+              { 
+                  if (c.isSelected()) {
+                	  checkBoxSelected.add(thisTopic);
+                	  pickTopic(false);
+                  } else {
+                	  checkBoxSelected.remove(thisTopic);
+                	  pickTopic(true);
+                  }
+              } 
+          };
+          
+          c.setOnAction(event);  
+          
+      } 
+      
+      questionsLabel = new Label("# of Questions (0): ");
+      questionsText = new TextField();
+      HBox questions = new HBox(8);
+      questions.getChildren().addAll(questionsLabel,questionsText);
+      questions.setTranslateY(100);
+      questions.setAlignment(Pos.CENTER);
+      
+      vbox.getChildren().add(questions);
+      
+      //parent.setTop(vbox);
+
+      return vbox;
+  }
+  
   private void startButton() {
 	  pickQuestion();
 	  if (questionsPicked && topicPicked) {
@@ -195,10 +272,21 @@ public class GUITopicSelectController extends Scene {
 		  
 		  System.out.println(qListFinal);
 		  
+		  // Question & Answer Layout
+		  
+		  int[] yuh = new int[1];
+		  yuh[0] = 0;
+		  
 		  Primary.setScene(sceneList.get(1));
+		  VBox questionDisplay;
+		  
+		  questionDisplay = (((GUIQuizController) sceneList.get(1)).displayQuestion(((GUIQuizController)sceneList.get(1)).root, Primary, sceneList, 0, ((GUIQuizController)sceneList.get(1)).correct));        
+		  ((BorderPane) ((GUIQuizController) sceneList.get(1)).root).setCenter(questionDisplay);
+		  ((GUIQuizController) sceneList.get(1)).questionNumber = 0;
+		  ((GUIQuizController) sceneList.get(1)).correct[0] = 0;
 		  
 		  System.out.println(Primary.getScene().toString());
-		  System.out.println(sceneList.get(1));
+		  //System.out.println(sceneList.get(1));
 	  }
   }
 }

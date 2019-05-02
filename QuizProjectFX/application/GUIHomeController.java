@@ -34,7 +34,13 @@ public class GUIHomeController extends Scene
         HBox buttons = new HBox(10);
         buttons.setAlignment(Pos.CENTER);
         Button quizButton = new Button("Take Quiz");
-        quizButton.setOnAction(e -> Primary.setScene(sceneList.get(4)));
+        quizButton.setOnAction(e -> {
+        	Primary.setScene(sceneList.get(4));
+        	VBox topicList;
+  		  
+  		  topicList = (((GUITopicSelectController) sceneList.get(4)).updateTopics());        
+  		  ((BorderPane) ((GUITopicSelectController) sceneList.get(4)).root).setTop(topicList);
+        });
         quizButton.setPrefSize(100, 100);
 
         Button loadQuiz = new Button("Load Quiz");

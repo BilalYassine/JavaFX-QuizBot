@@ -15,9 +15,13 @@ import javafx.scene.layout.HBox;
 
 
 public class GUIQuizEnd extends Scene {
+	public Label correct;
+	int[] numCorrect;
     public GUIQuizEnd(Parent root,Stage Primary, List<Scene> sceneList,int[] numCorrect) {
       super(root,800,600);
       this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+      
+      this.numCorrect = numCorrect;
       
       Primary.setTitle("Results");
       BorderPane parent = (BorderPane)root;
@@ -32,7 +36,7 @@ public class GUIQuizEnd extends Scene {
       HBox center = new HBox(10);
       Label text = new Label("You got ");
       text.setId("subtitle-text");
-      Label correct = new Label(numCorrect[0] + "");
+      correct = new Label(numCorrect[0] + "");
       correct.setId("title-text");
       Label text2 = new Label(" Correct!");
       text2.setId("subtitle-text");
@@ -45,5 +49,9 @@ public class GUIQuizEnd extends Scene {
       parent.setBottom(homeButton);
       homeButton.setOnAction(e ->Primary.setScene(sceneList.get(0)));
   }
+    
+    public void updateScore() {
+    	correct.setText(numCorrect[0] + "");
+    }
     
 }
