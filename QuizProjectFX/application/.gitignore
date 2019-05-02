@@ -19,4 +19,10 @@
 /QuestionTable.class
 /Answer.class
 /FileSystem.class
+<<<<<<< HEAD
 /GUITopicSelectController$1.class
+=======
+/FileManager.class
+>>>>>>> branch 'master' of https://github.com/EmikVayts/Team47.git
+/WriteQuestionToJSON.class
+/GUIMaster$1.class

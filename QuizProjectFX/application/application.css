@@ -15,6 +15,14 @@
  -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
+.button:hover{
+ -fx-text-fill: white;
+ -fx-font-family: "Arial Narrow";
+ -fx-font-weight: bold;
+ -fx-background-color: #61a2b1;
+ -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
 #title-text {
  -fx-font-size: 50px;
  -fx-font-family: "Arial Black";
@@ -22,6 +30,12 @@
  -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
 
+#subtitle-text {
+ -fx-font-size: 30px;
+ -fx-font-family: "Arial Black";
+ -fx-fill: #818181;
+ -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+}
 #question {
  -fx-font-size: 25px;
  -fx-font-family: "Arial Black";

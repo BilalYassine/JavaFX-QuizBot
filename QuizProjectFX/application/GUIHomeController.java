@@ -1,12 +1,6 @@
 package application;
 
-
-
-import java.io.File;
 import java.util.List;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -14,17 +8,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
     
 public class GUIHomeController extends Scene
 {
-    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList, QuestionTable table)
+    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList,QuestionTable table)
     {
         super(root, 800, 600);
+        Primary.setTitle("Home");
         BorderPane parent = (BorderPane) root;
         this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
@@ -47,7 +42,24 @@ public class GUIHomeController extends Scene
         loadQuiz.setOnAction(e -> {
             FileSystem.loadFile(Primary);
         });
-
+        VBox countVBox = new VBox(10);
+        HBox countBox = new HBox(10);
+        Button countButton = new Button("Update number of Questions");
+        Label countText1 = new Label("There are ");
+        countText1.setId("answer-text");
+        Text count = new Text(table.getNumQuestions()+"");
+        count.setId("question-text");
+        countButton.setOnAction(e -> {
+          count.setText(table.getNumQuestions()+"");
+          System.out.println(table.getNumQuestions());
+        });
+        Label countText2 = new Label("questions in the Database ");
+        countText2.setId("answer-text");
+        countBox.getChildren().addAll(countText1,count,countText2);
+        countVBox.setAlignment(Pos.CENTER);
+        countVBox.getChildren().addAll(countButton,countBox);
+        parent.setRight(countVBox);
+        
         Button addQuestionButton = new Button("Add Question");
         addQuestionButton.setOnAction(e -> Primary.setScene(sceneList.get(2)));
         addQuestionButton.setPrefSize(100, 100);
@@ -55,6 +67,4 @@ public class GUIHomeController extends Scene
         buttons.getChildren().addAll(quizButton, loadQuiz, addQuestionButton);
         parent.setBottom(buttons);
     }
-
 }
-

@@ -18,8 +18,8 @@ public class Question {
   // instance fields used for storing question
   boolean isCorrect;
   public String questionText;
-  public String topic;
   public String metaData;
+  public String topic;
   ImageView questionImage;
   List<Answer> answers;
   String[] inputAnswers;
@@ -31,6 +31,7 @@ public class Question {
    */
   public Question(String[] inputAns) {
     questionText = "";
+    metaData = "";
     topic = "";
     questionImage = null;
     inputAnswers = inputAns;
@@ -60,22 +61,20 @@ public class Question {
     if(question != null) { // makes sure question isn't null
       this.questionText = question;
     }
-  }
-  
-  /**
-   * Setter method for the meta data that is read from 
-   * the JSON file.
-   * @param metaData: notes about question
-   */
-  public void setMetaData(String metaData) {
-    this.metaData = metaData;
-  }
+  }  
+
   //yo
   /**
    * Setter method for the topic of the question that 
    * helps organize the question.
    * @param topic: categorization from JSON file.
    */
+  public void setMetaData(String metaData) {
+	    if(metaData != null) {
+	      this.metaData = metaData;
+	    }
+	  }
+  
   public void setQuestionTopic(String topic) {
     if(topic != null) {
       this.topic = topic;
@@ -91,6 +90,27 @@ public class Question {
     String path = "images/" + imageFileName;
     Image imageSet = new Image(path); // create image instance
     this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
+    try
+    {
+        //String path = "images/"+imageFileName;
+        //Image imageSet = new Image(path);
+        this.questionImage = new ImageView(imageSet);
+    } catch (Exception e)
+    {
+        // set default image path if error is thrown
+        //Image imageSet = new Image("images/default.png");
+        this.questionImage = new ImageView(imageSet);
+    }
+    
+  }
+  
+  public void setAnswers(List<Answer> newAnswers) {
+    this.answers = newAnswers;
+  }
+  
+  public List<Answer> getAnswers()
+  {
+      return answers;
   }
   
   /**
