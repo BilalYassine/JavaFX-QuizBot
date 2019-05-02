@@ -22,6 +22,7 @@ public class WriteQuestionToJSON
     	
     	answerArrayList = (ArrayList<Answer>) question.getAnswers();
     	
+	// Loop to iterate answer arraylist for the appropriate answers
     	for(int i = 0; i < answerArrayList.size(); i++) {
     		if(i%2 == 0) {
     			JSONObject choiceArrayAnswer = new JSONObject();
