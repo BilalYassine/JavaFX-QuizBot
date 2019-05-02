@@ -28,6 +28,7 @@ public class GUIQuizEnd extends Scene {
       titleBox.setAlignment(Pos.CENTER);
       parent.setTop(titleBox);
       
+      
       HBox center = new HBox(10);
       Label text = new Label("You got ");
       text.setId("subtitle-text");
