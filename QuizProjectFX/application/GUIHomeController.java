@@ -3,6 +3,7 @@ package application;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -18,11 +19,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
     
 public class GUIHomeController extends Scene
 {
-    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList)
+    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList,QuestionTable table)
     {
         super(root, 800, 600);
         Primary.setTitle("Home");
@@ -48,7 +51,23 @@ public class GUIHomeController extends Scene
         loadQuiz.setOnAction(e -> {
             FileSystem.loadFile(Primary);
         });
-
+        VBox countVBox = new VBox(10);
+        HBox countBox = new HBox(10);
+        Button countButton = new Button("Update number of Questions");
+        Label countText1 = new Label("There are ");
+        countText1.setId("answer-text");
+        Text count = new Text(questionNumber(table)+"");
+        count.setId("question-text");
+        countButton.setOnAction(e -> {
+          count.setText(questionNumber(table)+"");
+        });
+        Label countText2 = new Label("questions in the Database ");
+        countText2.setId("answer-text");
+        countBox.getChildren().addAll(countText1,count,countText2);
+        countVBox.setAlignment(Pos.CENTER);
+        countVBox.getChildren().addAll(countButton,countBox);
+        parent.setRight(countVBox);
+        
         Button addQuestionButton = new Button("Add Question");
         addQuestionButton.setOnAction(e -> Primary.setScene(sceneList.get(2)));
         addQuestionButton.setPrefSize(100, 100);
@@ -56,6 +75,13 @@ public class GUIHomeController extends Scene
         buttons.getChildren().addAll(quizButton, loadQuiz, addQuestionButton);
         parent.setBottom(buttons);
     }
-
+    private int questionNumber(QuestionTable table) {
+      int count = 0;
+      List<String> topics = table.getTopicList();
+      for(int x =0; x<table.getNumTopics();x++) {
+        count +=table.getQuestionsList(topics.get(x)).size();
+      }
+      return count;
+    }
 }
 

@@ -20,7 +20,7 @@ public class GUIMaster extends Application {
         BorderPane root5 = new BorderPane();
         // GUI List is a list of all the GUI 0 = Home, 1 = Quiz, 2 = Add Quesiton, 3 = Quiz end, 4 = Quiz Topic Selection
         ArrayList<Scene> GUIList = new ArrayList<Scene>();
-        GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,GUIList);
+        GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,GUIList,table);
         GUIList.add(GUIHomeController);
         
         GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList);
