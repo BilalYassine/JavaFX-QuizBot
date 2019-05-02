@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -46,8 +47,8 @@ public class FileSystem
             try
             {
                 FileWriter writer = new FileWriter(file);
-                // PrintWriter print = new PrintWriter(writer);
-                writer.write("TEST JSON");      // Replace with JSON file Generator
+                JSONObject JSONFile = WriteQuestionToJSON.generateJSONObject();
+                writer.write(JSONFile.toJSONString());      // Writes questions to JSON file
                 writer.close();
             } catch (IOException ex)
             {

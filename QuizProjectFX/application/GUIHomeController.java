@@ -67,12 +67,4 @@ public class GUIHomeController extends Scene
         buttons.getChildren().addAll(quizButton, loadQuiz, addQuestionButton);
         parent.setBottom(buttons);
     }
-    private int questionNumber(QuestionTable table) {
-      int count = 0;
-      List<String> topics = table.getTopicList();
-      for(int x =0; x<table.getNumTopics();x++) {
-        count +=table.getQuestionsList(topics.get(x)).size();
-      }
-      return count;
-    }
 }

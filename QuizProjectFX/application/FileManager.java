@@ -34,7 +34,7 @@ final class FileManager {
         // get question array
         JSONArray ja = (JSONArray) jo.get("questionArray"); 
         
-        // Iterate through each question in ja
+        // Iterate through each question in JSONArray ja
         for (Object q : ja)
         {
             JSONObject jQ = (JSONObject) q;

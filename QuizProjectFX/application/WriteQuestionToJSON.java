@@ -12,19 +12,15 @@ public class WriteQuestionToJSON
 	static ArrayList<Answer> answerArrayList = new ArrayList<>();
 	static Question question = new Question();
 	
-	public WriteQuestionToJSON(Question question) {
-		WriteQuestionToJSON.question = question;
-	}
-	
     @SuppressWarnings("unchecked")
-    public static void main( String[] args )
+    public static JSONObject generateJSONObject()
     {
     	JSONArray questionArray = new JSONArray();
     	JSONArray choiceArray = new JSONArray();
     	
     	answerArrayList = (ArrayList<Answer>) question.getAnswers();
     	
-	// Loop to iterate answer arraylist for the appropriate answers
+	// Loop to iterate answer ArrayList for the appropriate answers
     	for(int i = 0; i < answerArrayList.size(); i++) {
     		if(i%2 == 0) {
     			JSONObject choiceArrayAnswer = new JSONObject();
@@ -46,12 +42,6 @@ public class WriteQuestionToJSON
         questionArray.add(questionDetails);
         questionObject.put("questionArray", questionArray); 
         
-        //Write JSON file
-        try (FileWriter file = new FileWriter("C://Users//bilal//eclipse-workspace/cs400_eclipse_p4/src/writetest.json")) {
-            file.write(questionObject.toJSONString());
- 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return questionObject;
     }
 }
