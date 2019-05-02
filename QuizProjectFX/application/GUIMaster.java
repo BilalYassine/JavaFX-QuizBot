@@ -43,6 +43,9 @@ public class GUIMaster extends Application {
           e.printStackTrace();
       }
   }
+	public void stop() {
+	  
+	}
 	public static void main(String[] args) {
 		table = new QuestionTable();
 		
