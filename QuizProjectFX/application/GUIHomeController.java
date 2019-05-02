@@ -84,4 +84,3 @@ public class GUIHomeController extends Scene
       return count;
     }
 }
-

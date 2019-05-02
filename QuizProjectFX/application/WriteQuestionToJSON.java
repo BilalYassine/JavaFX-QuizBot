@@ -1,12 +1,13 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
  
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
  
 public class WriteQuestionToJSON
 {
-	
+	static ArrayList<Answer> answerArrayList = new ArrayList<>();
 	static Question question = new Question();
 	
 	public WriteQuestionToJSON(Question question) {
@@ -19,10 +20,16 @@ public class WriteQuestionToJSON
     	JSONArray questionArray = new JSONArray();
     	JSONArray choiceArray = new JSONArray();
     	
-    	JSONObject choiceArrayDetail1 = new JSONObject();
-    	choiceArrayDetail1.put(question.getAnswers().toString(), question.getAnswers().toString());
+    	answerArrayList = (ArrayList<Answer>) question.getAnswers();
     	
-    	choiceArray.add(choiceArrayDetail1);
+    	for(int i = 0; i < answerArrayList.size(); i++) {
+    		if(i%2 == 0) {
+    			JSONObject choiceArrayAnswer = new JSONObject();
+    	    	choiceArrayAnswer.put(answerArrayList.get(i), "");
+    	    	choiceArrayAnswer.put(answerArrayList.get(i+1), "");
+    	    	choiceArray.add(choiceArrayAnswer);
+    		}
+    	}
     	
         // Creating JSONObject
         JSONObject questionDetails = new JSONObject();
