@@ -29,7 +29,8 @@ public class GUIMaster extends Application {
         GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,GUIList, table);
         GUIList.add(GUIAddQuestion);
         
-        GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,GUIList);
+        int[] correct = new int[1];
+        GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,GUIList, correct);
         GUIList.add(GUIQuizEnd);
         
         GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,GUIList);

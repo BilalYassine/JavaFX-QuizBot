@@ -14,20 +14,22 @@ import javafx.scene.layout.HBox;
 
 
 public class GUIQuizEnd extends Scene {
-    public GUIQuizEnd(Parent root,Stage Primary, List<Scene> sceneList) {
+    public GUIQuizEnd(Parent root,Stage Primary, List<Scene> sceneList,int[] numCorrect) {
       super(root,800,600);
-      //Primary.setTitle("Results");
+      Primary.setTitle("Results");
       BorderPane parent = (BorderPane)root;
       
       Label title = new Label("End of Quiz");
+      parent.setTop(title);
       
       HBox center = new HBox(10);
       Label text = new Label("You got ");
-      Label correct = new Label(10 + "");
-      parent.setTop(title);
+      Label correct = new Label(numCorrect[0] + "");
+      center.getChildren().addAll(text,correct);
+      parent.setCenter(center);
       
       Button button = new Button("Home");
-      parent.setCenter(button);
+      parent.setBottom(button);
       button.setOnAction(e ->Primary.setScene(sceneList.get(0)));
   }
     

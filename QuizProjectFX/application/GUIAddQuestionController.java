@@ -27,6 +27,7 @@ import javafx.scene.text.Font;
 public class GUIAddQuestionController extends Scene {
     public GUIAddQuestionController(Parent root,Stage Primary, List<Scene> sceneList, QuestionTable table) {
       super(root,800,600);
+      Primary.setTitle("Add Question");
       BorderPane parent = (BorderPane)root;
       this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
       

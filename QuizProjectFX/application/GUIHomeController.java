@@ -25,6 +25,7 @@ public class GUIHomeController extends Scene
     public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList)
     {
         super(root, 800, 600);
+        Primary.setTitle("Home");
         BorderPane parent = (BorderPane) root;
         this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
