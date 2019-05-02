@@ -27,7 +27,7 @@ public class GUIQuizController extends Scene
     public List<Question> topicList = new ArrayList<>();
     public int questionNumber = 0;
 
-    public GUIQuizController(Parent root, Stage Primary, List<Scene> sceneList)
+    public GUIQuizController(Parent root, Stage Primary, List<Scene> sceneList, List<Question> qListFinal)
     {
         super(root, 800, 600);
         this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

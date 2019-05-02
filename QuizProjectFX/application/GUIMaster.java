@@ -1,6 +1,8 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -20,15 +22,18 @@ public class GUIMaster extends Application {
         BorderPane root5 = new BorderPane();
         
         ArrayList<Scene> x = new ArrayList<Scene>();
-        GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,x);
+        
+        List<Question> qListFinal = new ArrayList<Question>();
+        
+        GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,x,table);
         x.add(GUIHomeController);
-        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,x);
+        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,x,qListFinal);
         x.add(GUIQuizController);
         GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,x);
         x.add(GUIAddQuestion);
         GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,x);
         x.add(GUIQuizEnd);
-        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,x);
+        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,x,table,qListFinal);
         x.add(GUITopicSelect);
         
         primaryStage.setScene(GUIHomeController);
@@ -39,6 +44,11 @@ public class GUIMaster extends Application {
   }
 	public static void main(String[] args) {
 		table = new QuestionTable();
+		Question q = new Question("Yeller", "Yoit");
+		table.addQuestion(q);
+		table.addQuestion(new Question("Yee", "Yoit"));
+		table.addQuestion(new Question("Yo", "Yay"));
+		table.addQuestion(new Question("Yo", "Dope"));
 		
 		launch(args);
 	}

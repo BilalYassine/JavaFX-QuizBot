@@ -22,7 +22,7 @@ import javafx.scene.layout.HBox;
     
 public class GUIHomeController extends Scene
 {
-    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList)
+    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList, QuestionTable table)
     {
         super(root, 800, 600);
         BorderPane parent = (BorderPane) root;

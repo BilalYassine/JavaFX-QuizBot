@@ -1,5 +1,6 @@
 package application;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class QuestionTable {
@@ -13,15 +14,17 @@ public class QuestionTable {
 	}
 	
 	//Add a questions
-	public void AddQuestion(Question q) {
-		for (int i=0; i<table.size();i++) {
-			if (table.get(i).get(0).topic.equals(q.topic)) {
-				table.get(i).add(q);
-				return;
+	public void addQuestion(Question q) {
+		if (table.size()!=0) {
+			for (int i=0; i<table.size();i++) {
+				if (table.get(i).get(0).topic.equals(q.topic)) {
+					table.get(i).add(q);
+					return;
+				}
 			}
 		}
 		table.add(new ArrayList<Question>());
-		table.get(table.size()).add(q);
+		table.get(table.size()-1).add(q);
 	}
 	
 	//Get a list of topics
@@ -31,6 +34,9 @@ public class QuestionTable {
 		for (int i=0; i<table.size();i++) {
 			topicList.add(table.get(i).get(0).topic);
 		}
+		
+		Collections.sort(topicList);
+		
 		return topicList;
 	}
 	
