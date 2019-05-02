@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class GUIMaster extends Application {
 
-	static QuestionTable table;
+	public static QuestionTable table;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -23,7 +23,7 @@ public class GUIMaster extends Application {
         GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,GUIList,table);
         GUIList.add(GUIHomeController);
         
-        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList);
+        GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList, null);
         GUIList.add(GUIQuizController);
         
         GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,GUIList, table);

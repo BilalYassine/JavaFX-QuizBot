@@ -56,10 +56,11 @@ public class GUIHomeController extends Scene
         Button countButton = new Button("Update number of Questions");
         Label countText1 = new Label("There are ");
         countText1.setId("answer-text");
-        Text count = new Text(questionNumber(table)+"");
+        Text count = new Text(table.getNumQuestions()+"");
         count.setId("question-text");
         countButton.setOnAction(e -> {
-          count.setText(questionNumber(table)+"");
+          count.setText(table.getNumQuestions()+"");
+          System.out.println(table.getNumQuestions());
         });
         Label countText2 = new Label("questions in the Database ");
         countText2.setId("answer-text");
