@@ -37,7 +37,7 @@ public class FileSystem
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JSON", "*.json*"));
         File file = fileChooser.showSaveDialog(stage);
-        if (!file.getName().contains("."))
+        if (!file.getName().contains("."))      // adds .json extension if user hasn't already added one
         {
             file = new File(file.getAbsolutePath() + ".json");
         }

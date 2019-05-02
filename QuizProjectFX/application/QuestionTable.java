@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Hashtable;
 import java.util.List;
@@ -51,6 +52,19 @@ public class QuestionTable
         return table.get(topic);  
     }
     
+    // Gets a list of all Questions in table
+    public List<Question> getAllQuestions()
+    {
+        List<Question> allQuestions = new ArrayList<>();
+        Collection<List<Question>> questionsByTopic = table.values();
+        for (List<Question> questionList: questionsByTopic)
+        {
+            allQuestions.addAll(questionList);
+        }
+        
+        return allQuestions;
+    }
+    
     // get number of topics
     public int getNumTopics()
     {
@@ -61,6 +75,7 @@ public class QuestionTable
     {
         return numQuestions;
     }
+    
 }
 
 
