@@ -10,6 +10,7 @@ public class GUIMaster extends Application {
 
 	static QuestionTable table;
 	
+	
 	@Override
 	public void start(Stage primaryStage) {
 	  try {

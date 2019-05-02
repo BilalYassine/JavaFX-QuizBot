@@ -131,6 +131,7 @@ public class GUIAddQuestionController extends Scene {
           alert.setContentText("Ooops, please add text to the question box");
           alert.showAndWait();
           return;
+          
         }
         q.setQuestion(questionText.getText());
         if(topicText.getText().equals("")) {//checks whether the topic of the question was entered
