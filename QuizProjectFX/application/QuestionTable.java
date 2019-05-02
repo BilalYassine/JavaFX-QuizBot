@@ -10,12 +10,14 @@ public class QuestionTable
     // hashTable with Keys as Topics and Values as ArrayList with questions
     private Hashtable<String, List<Question>> table;
     private int numTopics;
+    private int numQuestions;
 
     // Creates a new question table
     public QuestionTable()
     {
         table = new Hashtable<String, List<Question>>();
         numTopics = 0;
+        numQuestions = 0;
     }
 
     // Add a question
@@ -30,9 +32,10 @@ public class QuestionTable
             List<Question> newTopicList = new ArrayList<>();
             newTopicList.add(q);
             table.put(q.topic, newTopicList);
+            numTopics++;
         }
         
-        numTopics++;
+        numQuestions++;
     }
 
     // Get a list of topics
@@ -50,6 +53,11 @@ public class QuestionTable
     public int getNumTopics()
     {
         return numTopics;
+    }
+    
+    public int getNumQuestions()
+    {
+        return numQuestions;
     }
 }
 
