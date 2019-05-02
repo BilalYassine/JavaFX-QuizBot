@@ -71,7 +71,7 @@ public class GUIMaster extends Application {
 	    ButtonType save = new ButtonType("Save and Exit", ButtonBar.ButtonData.OK_DONE);
 	    ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 	    ButtonType exit = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
-	    Alert alert = new Alert(AlertType.CONFIRMATION,"RandomText",save,cancel,exit);
+	    Alert alert = new Alert(AlertType.CONFIRMATION,"",save,cancel,exit);
 	    alert.setHeaderText("You are about to exit");
 	    alert.setContentText("Would you like to save your questions before exiting?");
 	    
