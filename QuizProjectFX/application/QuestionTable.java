@@ -50,6 +50,7 @@ public class QuestionTable
         return table.get(topic);  
     }
     
+    // get number of topics
     public int getNumTopics()
     {
         return numTopics;
