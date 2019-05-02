@@ -5,10 +5,10 @@ package application;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -30,18 +30,21 @@ public class GUIAddQuestionController extends Scene {
       this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
       
       parent.setPadding(new Insets(10, 10, 10, 10));
-
       final FileChooser fileChooser = new FileChooser();
-      ArrayList<String> image = new ArrayList<String>();
+      fileChooser.setSelectedExtensionFilter(new ExtensionFilter("Images", "jpg", "png", "gif"));
+      ArrayList<String> image = new ArrayList<String>();//image is a ArrayList so it can be accessed inside the 
+                                                       // addImage button action
       image.add(null);
       Button addImage = new Button("Add Image");
-      parent.setRight(addImage);
+      // This takes in a file from the file chooser
       addImage.setOnAction(e -> {
         File file = fileChooser.showOpenDialog(Primary);
         if (file != null) {
             image.set(0, file.getAbsolutePath());
         }
       });
+      parent.setRight(addImage);
+      
       VBox choices = new VBox(10);
       
       Label questionLabel = new Label("Question");
