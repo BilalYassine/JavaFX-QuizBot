@@ -15,8 +15,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 final class FileManager {
-	
-	public static QuestionTable quizTable = new QuestionTable();
     
     /**
      * Takes in a file path for a json file and builds the appropriate Questions, Answers, and QuestionTable
@@ -64,7 +62,8 @@ final class FileManager {
             
             // Add compiled question to quizTable
             question.setAnswers(answerList);
-            quizTable.AddQuestion(question);
+            GUIMaster.table.AddQuestion(question);
+            System.out.println(GUIMaster.table.getNumQuestions());
             
         }
     }

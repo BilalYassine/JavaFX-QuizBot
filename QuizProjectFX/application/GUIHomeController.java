@@ -1,5 +1,11 @@
 package application;
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> refs/remotes/origin/master
 import java.util.List;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
