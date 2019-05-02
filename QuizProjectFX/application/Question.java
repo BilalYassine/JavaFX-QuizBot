@@ -87,18 +87,15 @@ public class Question {
    * @param imageFileName: name of file from JSON
    */
   public void setImage(String imageFileName) {
-    String path = "images/" + imageFileName;
-    Image imageSet = new Image(path); // create image instance
-    this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
     try
     {
-        //String path = "images/"+imageFileName;
-        //Image imageSet = new Image(path);
-        this.questionImage = new ImageView(imageSet);
+        String path = "images/" + imageFileName;
+        Image imageSet = new Image(path); // create image instance
+        this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
     } catch (Exception e)
     {
         // set default image path if error is thrown
-        //Image imageSet = new Image("images/default.png");
+        Image imageSet = new Image("images/default.png");
         this.questionImage = new ImageView(imageSet);
     }
     
