@@ -89,8 +89,7 @@ public class Question {
   public void setImage(String imageFileName) {
     try
     {
-        String path = "images/" + imageFileName;
-        Image imageSet = new Image(path); // create image instance
+        Image imageSet = new Image(imageFileName); // create image instance
         this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
     } catch (Exception e)
     {
