@@ -18,7 +18,7 @@ public class GUIMaster extends Application {
         BorderPane root3 = new BorderPane();
         BorderPane root4 = new BorderPane();
         BorderPane root5 = new BorderPane();
-        // GUI List is a list of all the GUI 1 = Home, 2 = Quiz, 3 = Add Quesiton, 4 = Quiz end, 5 = Quiz Topic Selection
+        // GUI List is a list of all the GUI 0 = Home, 1 = Quiz, 2 = Add Quesiton, 3 = Quiz end, 4 = Quiz Topic Selection
         ArrayList<Scene> GUIList = new ArrayList<Scene>();
         GUIHomeController GUIHomeController = new GUIHomeController(root,primaryStage,GUIList);
         GUIList.add(GUIHomeController);
@@ -30,6 +30,7 @@ public class GUIMaster extends Application {
         GUIList.add(GUIAddQuestion);
         
         int[] correct = new int[1];
+        correct[0] =0;
         GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,GUIList, correct);
         GUIList.add(GUIQuizEnd);
         
