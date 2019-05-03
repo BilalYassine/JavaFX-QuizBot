@@ -129,8 +129,6 @@ public class GUIQuizController extends Scene
      */
     public VBox displayQuestion(Parent root2, Stage Primary, List<Scene> sceneList, int questionNumber, int[] correct)
     {   
-    	System.out.println("I am being run");
-    	System.out.println(qListFinal);
     	
         //Initialize tracking variables
         qAnswered = false; 
@@ -139,7 +137,6 @@ public class GUIQuizController extends Scene
         //If no questions left, go to the end page scene
         if(questionNumber == qListFinal.size()) {
           Primary.setScene(sceneList.get(3));
-          System.out.println("questionNumber " +questionNumber);
           correct[1] = questionNumber;
           ((GUIQuizEnd) sceneList.get(3)).updateScore();
         }
@@ -177,7 +174,6 @@ public class GUIQuizController extends Scene
         
         questionImage.setFitHeight(150);
         questionImage.setPreserveRatio(true);
-        System.out.println("Answers num: " + current.answers.size());
         //Loops through all possible answers and puts them into the box
         for(Answer a : current.answers) { 
               //create button with answer text inside for user interaction
@@ -212,7 +208,6 @@ public class GUIQuizController extends Scene
               }
             // add all of the answer buttons to the VBox
             answers.getChildren().addAll(answerButton);
-            System.out.println("Answers" +answers.getChildren().size());
           }
           
         // add all of of the other wanted information to the VBox

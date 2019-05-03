@@ -90,7 +90,6 @@ public class GUIQuizEnd extends Scene {
     	percent = percent*100;
     	Math.round(percent);
     	percentage.setText(percent+"");
-    	System.out.println(numCorrect[1]);
     }
     
 }

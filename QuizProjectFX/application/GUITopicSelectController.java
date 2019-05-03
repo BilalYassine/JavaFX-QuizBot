@@ -137,8 +137,6 @@ public class GUITopicSelectController extends Scene {
 			  maxQuestions += table.getQuestionsList(checkBoxSelected.get(i)).size();
 		  }
 		  questionsLabel.setText("# of Questions (1-"+maxQuestions+ ") : ");
-		  System.out.println("Check");
-		  System.out.println(maxQuestions);
 	  } else {
     	  questionsPicked = false;
     	  if (checkBoxSelected.size()==0) {
@@ -162,7 +160,6 @@ public class GUITopicSelectController extends Scene {
 	  }
 	  if (topicPicked && numQuestions >= 1 && numQuestions <= maxQuestions) {
 		  questionsPicked = true;
-		  //System.out.println("Valid amount of questions!");
 	  }
   }
   
@@ -250,7 +247,6 @@ public class GUITopicSelectController extends Scene {
     		  qList.addAll(table.getQuestionsList(checkBoxSelected.get(i)));
     	  }
 		  
-		  System.out.println("qList : "+qList.size());
 		  
 		  //List<Question> qListFinal = new ArrayList<Question>();
 		  int randNum = 0;
@@ -261,7 +257,6 @@ public class GUITopicSelectController extends Scene {
 			  qList.remove(randNum);
 		  }
 		  
-		  System.out.println(qListFinal);
 		  
 		  // Question & Answer Layout
 		  
@@ -276,8 +271,6 @@ public class GUITopicSelectController extends Scene {
 		  ((GUIQuizController) sceneList.get(1)).questionNumber = 0;
 		  ((GUIQuizController) sceneList.get(1)).correct[0] = 0;
 		  
-		  System.out.println(Primary.getScene().toString());
-		  //System.out.println(sceneList.get(1));
 	  }
   }
 }
