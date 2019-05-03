@@ -22,20 +22,20 @@ import javafx.scene.layout.VBox;
 /**
  * GUI Controller Class that displays addQuestion screen and updates the database
  * with the added questions. 
- *
  */
 public class GUIAddQuestionController extends Scene {
     
     private String imagePath = "";
     
     /**
-     * Initializes Scene children 
-     * @param root
-     * @param Primary
-     * @param sceneList
-     * @param table
+     * Initializes and populates scene with appropriate buttons and text
+     * Contains logic for reseting fields and handling incorrect user input
+     * 
+     * @param root      BorderPane that represents the GUI's window 
+     * @param Primary   Main Stage of the application
+     * @param sceneList List of all Scenes so it can switch Scenes
      */
-    public GUIAddQuestionController(Parent root,Stage Primary, List<Scene> sceneList, QuestionTable table) {
+    public GUIAddQuestionController(Parent root,Stage Primary, List<Scene> sceneList) {
       super(root,800,600);
       Primary.setTitle("Add Question");
       BorderPane parent = (BorderPane)root;
@@ -122,7 +122,8 @@ public class GUIAddQuestionController extends Scene {
       parent.setBottom(bottom);
       
       returnButton.setOnAction(e ->Primary.setScene(sceneList.get(0)));//Returns to the home screen
-      /** When the save Button is pressed it will take the various inputs from this screen and createes
+      
+      /** When the save Button is pressed it will take the various inputs from this screen and creates
        * a question from it.
        * If there is no question, no topic, no answers, or no correct answers a popup will display with the error
        * and no question will be made.
@@ -215,7 +216,7 @@ public class GUIAddQuestionController extends Scene {
         answerText3.clear();
         answerText4.clear();
         answerText5.clear();
-        table.addQuestion(q);
+        Main.table.addQuestion(q);
         GUIHomeController homeController = (GUIHomeController) sceneList.get(0);
         homeController.updateQuestionCount();
       });    

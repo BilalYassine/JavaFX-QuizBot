@@ -27,8 +27,6 @@ import javafx.scene.layout.VBox;
 public class GUIQuizController extends Scene
 {
 
-    public Hashtable<String, List<Question>> questionTable = new Hashtable<>();
-    public List<Question> topicList = new ArrayList<>();
     public List<Question> qListFinal;
     public int correctAnswers = 0;
     public int[] correct;

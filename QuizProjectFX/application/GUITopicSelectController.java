@@ -23,40 +23,33 @@ import javafx.scene.layout.VBox;
 public class GUITopicSelectController extends Scene {
 	
 	//The selection box
-	ArrayList<CheckBox> checkBoxList = new ArrayList<CheckBox>();
-	ArrayList<String> checkBoxSelected = new ArrayList<String>();
-	//CheckListView topicSelectBox = new CheckListView(options);
+	private ArrayList<String> checkBoxSelected = new ArrayList<String>();
 	
 	//The question number selection
-	boolean topicPicked = false;
-	boolean questionsPicked = false;
-	int maxQuestions;
-	int numQuestions;
-	String pickedTopic;
-	Label questionsLabel;
-	QuestionTable table;
-	TextField questionsText;
+	private boolean topicPicked = false;
+	private boolean questionsPicked = false;
+	private int maxQuestions;
+	private int numQuestions;
+	private Label questionsLabel;
+	private TextField questionsText;
 	
 	//Scene Controllers
-	Stage Primary;
-	List<Scene> sceneList;
-	List<Question> qListFinal;
-	Parent root;
-	int[] correct;
+	private Stage Primary;
+	private List<Scene> sceneList;
+	private List<Question> qListFinal;
+	Parent root;   // Used by HomeController
 	
-    public GUITopicSelectController(Parent root,Stage Primary, List<Scene> sceneList, QuestionTable table, List<Question> qListFinal, int[] correct) {
+    public GUITopicSelectController(Parent root,Stage Primary, List<Scene> sceneList, List<Question> qListFinal, int[] correct) {
       super(root,800,600);
       
       //Set constructor variables to class variables
-      this.table = table;
       this.sceneList = sceneList;
       this.Primary = Primary;
       this.qListFinal = qListFinal;
-      this.root = root;
-      this.correct = correct;
       
       //Primary.setTitle("Topic Select");
       BorderPane parent = (BorderPane) root;
+      this.root = parent;
       this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
       
       VBox vbox = new VBox();
@@ -71,7 +64,7 @@ public class GUITopicSelectController extends Scene {
       vbox.setAlignment(Pos.CENTER);
       
       //Getting the list of topics
-      List<String> topicList = table.getTopicList();
+      List<String> topicList = Main.table.getTopicList();
 
       //topicSelectBox.setTranslateY(100);
       
@@ -136,7 +129,7 @@ public class GUITopicSelectController extends Scene {
 		  questionsPicked = false;
 		  maxQuestions = 0;
 		  for (int i=0; i<checkBoxSelected.size(); i++) {
-			  maxQuestions += table.getQuestionsList(checkBoxSelected.get(i)).size();
+			  maxQuestions += Main.table.getQuestionsList(checkBoxSelected.get(i)).size();
 		  }
 		  questionsLabel.setText("# of Questions (1-"+maxQuestions+ ") : ");
 	  } else {
@@ -147,7 +140,7 @@ public class GUITopicSelectController extends Scene {
     	  } else {
     		  maxQuestions = 0;
         	  for (int i=0; i<checkBoxSelected.size(); i++) {
-        		  maxQuestions += table.getQuestionsList(checkBoxSelected.get(i)).size();
+        		  maxQuestions += Main.table.getQuestionsList(checkBoxSelected.get(i)).size();
         	  }
     		  questionsLabel.setText("# of Questions (1-"+maxQuestions+ ") : ");
     	  }
@@ -189,7 +182,7 @@ public class GUITopicSelectController extends Scene {
       vbox.setAlignment(Pos.CENTER);
       
       //Getting the list of topics
-      List<String> topicList = table.getTopicList();
+      List<String> topicList = Main.table.getTopicList();
 
       //topicSelectBox.setTranslateY(100);
       
@@ -255,7 +248,7 @@ public class GUITopicSelectController extends Scene {
 		  List<Question> qList = new ArrayList<Question>();
 		  for (int i=0; i<checkBoxSelected.size(); i++) 
 		  {
-    		      qList.addAll(table.getQuestionsList(checkBoxSelected.get(i)));
+    		      qList.addAll(Main.table.getQuestionsList(checkBoxSelected.get(i)));
     	          }
 		  
 		  

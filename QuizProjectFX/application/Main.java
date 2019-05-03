@@ -36,6 +36,7 @@ public class Main extends Application {
         
         List<Question> qListFinal = new ArrayList<Question>();
         
+        // TODO: What is this??
         correct = new int[3];
         correct[0] = 0;
         correct[1] = 0;
@@ -47,13 +48,13 @@ public class Main extends Application {
         //GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList, null);
         //GUIList.add(GUIQuizController);
         
-        GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,GUIList, table);
+        GUIAddQuestionController GUIAddQuestion = new GUIAddQuestionController(root3,primaryStage,GUIList);
         GUIList.add(GUIAddQuestion);
         
         GUIQuizEnd GUIQuizEnd = new GUIQuizEnd(root4,primaryStage,GUIList, correct);
         GUIList.add(GUIQuizEnd);
         
-        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,GUIList, table, qListFinal,correct);
+        GUITopicSelectController GUITopicSelect = new GUITopicSelectController(root5,primaryStage,GUIList, qListFinal,correct);
         GUIList.add(GUITopicSelect);
         
         primaryStage.setScene(GUIHomeController);
@@ -89,23 +90,13 @@ public class Main extends Application {
 	            FileSystem.saveFile(stage);
 	        } else if(response == cancel)
 	        {
-	            event.consume();   // consaumes the cancel event so program stays running
+	            event.consume();   // consumes the cancel event so program stays running
 	        }
 	    });
 	}
 	
 	public static void main(String[] args) {
 		table = new QuestionTable();
-		/*List<Answer> yo = new ArrayList<Answer>();
-		yo.add(new Answer("1", false));
-		yo.add(new Answer("2", true));
-		table.addQuestion(new Question("What is life","Important", "fdasf", "pp.png", yo));
-		yo = new ArrayList<Answer>();
-		yo.add(new Answer("bread", false));
-		yo.add(new Answer("cheese", true));
-		table.addQuestion(new Question("What did you eat for breakfast","Important", "fdasf", "pp.png", yo));*/
-		
-		System.out.println(table.getAllQuestions());
 		
 		launch(args);
 	}
