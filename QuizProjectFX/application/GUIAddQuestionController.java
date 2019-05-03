@@ -41,7 +41,7 @@ public class GUIAddQuestionController extends Scene {
       addImage.setOnAction(e -> {
         File file = fileChooser.showOpenDialog(Primary);
         if (file != null) {
-            image.set(0, file.getName());
+            image.set(0, file.getAbsolutePath());
         }
       });
       parent.setRight(addImage);
@@ -145,7 +145,7 @@ public class GUIAddQuestionController extends Scene {
         if(!metaText.getText().equals("")) {//If the metadata is not empty it will add it to the question
           q.setMetaData(metaText.getText());
         }
-        ArrayList<Answer> answers = new ArrayList();
+        ArrayList<Answer> answers = new ArrayList<>();
         if(!answerText1.getText().equals("")) {//If the answer is not empty it will add it to the question
           if(answerButton1.isSelected()) {//If the question button is selected that answer is correct
             answers.add(new Answer(answerText1.getText(),true));

@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
@@ -75,7 +76,6 @@ public class Question {
     }
   }  
 
-  //yo
   /**
    * Setter method for the topic of the question that 
    * helps organize the question.
@@ -98,21 +98,26 @@ public class Question {
    * usable images from it.
    * @param imageFileName: name of file from JSON
    */
-  public void setImage(String imageFileName, Boolean jsonRead) {
-	if (!jsonRead)
-		path = ("images\\" + imageFileName);
-	else 
-		path = (imageFileName);
-    try
-    {
-        Image imageSet = new Image(path); // create image instance
-        this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
-    } catch (Exception e)
-    {
-        // set default image path if error is thrown
-        Image imageSet = new Image("images/default.png");
-        this.questionImage = new ImageView(imageSet);
-    }
+  public void setImage(String imageFileName, Boolean jsonRead) 
+  {
+      if (jsonRead)
+      {
+        path = "images/" + imageFileName;               // assumes images are stored in an image folder from ZIP, may end up having it just be the fileName
+      } else
+      {
+          path = "file:///" +imageFileName;             // Add file:/// so URL Protocol is interpreted properly
+      }
+      
+      try
+      {
+          Image imageSet = new Image(path); // create image instance
+          this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
+      } catch (Exception e)
+      {
+          // set default image path if error is thrown
+          Image imageSet = new Image("images/default.png");
+          this.questionImage = new ImageView(imageSet);
+      }
     
   }
   

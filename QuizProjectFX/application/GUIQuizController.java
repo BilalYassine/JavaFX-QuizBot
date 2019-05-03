@@ -168,8 +168,8 @@ public class GUIQuizController extends Scene
         	//questionImage.setImage = "pp.png";
         //}
         //else {
-        	questionImage = current.questionImage;
-        	questionImage.setId("Photo");
+    	questionImage = current.questionImage;
+    	questionImage.setId("Photo");
         
         //}
         
