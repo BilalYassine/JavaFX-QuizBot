@@ -62,8 +62,17 @@ public class GUIQuizEnd extends Scene {
       answeredBox.getChildren().addAll(answeredText1,answered,answeredText2);
       answeredBox.setAlignment(Pos.CENTER);
       
-      HBox percent = new HBox(10);
-      center.getChildren().addAll(correctBox,answeredBox);
+      HBox percentBox = new HBox(10);
+      Label percentText1 = new Label("That is ");
+      percentText1.setId("subtitle-text");
+      percentage = new Label(0+"");
+      percentage.setId("title-text");
+      Label percentText2 = new Label("% Percent");
+      percentText2.setId("subtitle-text");
+      percentBox.getChildren().addAll(percentText1,percentage,percentText2);
+      percentBox.setAlignment(Pos.CENTER);
+      
+      center.getChildren().addAll(correctBox,answeredBox,percentBox);
       center.setAlignment(Pos.CENTER);
       parent.setCenter(center);
       
@@ -77,6 +86,11 @@ public class GUIQuizEnd extends Scene {
     	correct.setText(numCorrect[0] + "");
     	total.setText(numCorrect[1] + "");
     	answered.setText(numCorrect[2] +"");
+    	numCorrect[2] = 0;
+    	double percent =((double)numCorrect[0])/numCorrect[1];
+    	percent = percent*100;
+    	Math.round(percent);
+    	percentage.setText(percent+"");
     	System.out.println(numCorrect[1]);
     }
     
