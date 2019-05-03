@@ -86,7 +86,7 @@ public class GUIMaster extends Application {
 	    alert.showAndWait().ifPresent(response -> {
 	        if (response == save) 
 	        {
-	            FileSystem.saveJSON(stage);
+	            FileSystem.saveFile(stage);
 	        } else if(response == cancel)
 	        {
 	            event.consume();   // consaumes the cancel event so program stays running

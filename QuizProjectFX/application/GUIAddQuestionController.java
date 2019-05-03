@@ -24,6 +24,9 @@ import javafx.scene.layout.VBox;
 
 
 public class GUIAddQuestionController extends Scene {
+    
+    private String imagePath = "";
+    
     public GUIAddQuestionController(Parent root,Stage Primary, List<Scene> sceneList, QuestionTable table) {
       super(root,800,600);
       Primary.setTitle("Add Question");
@@ -33,16 +36,12 @@ public class GUIAddQuestionController extends Scene {
       parent.setPadding(new Insets(10, 10, 10, 10));
       final FileChooser fileChooser = new FileChooser();
       fileChooser.setSelectedExtensionFilter(new ExtensionFilter("Images", "jpg", "png", "gif"));
-      ArrayList<String> image = new ArrayList<String>();//image is a ArrayList so it can be accessed inside the 
-                                                       // addImage button action
-      image.add(null);
+      
+      // addImage button action
       Button addImage = new Button("Add Image");
       // This takes in a file from the file chooser
       addImage.setOnAction(e -> {
-        File file = fileChooser.showOpenDialog(Primary);
-        if (file != null) {
-            image.set(0, file.getAbsolutePath());
-        }
+          imagePath = FileSystem.loadImage(Primary);
       });
       parent.setRight(addImage);
       
@@ -186,7 +185,8 @@ public class GUIAddQuestionController extends Scene {
           else
             answers.add(new Answer(answerText5.getText(),false));
         }
-          q.setImage(image.get(0), false);
+          q.setImage(imagePath, false);
+          imagePath = "";       // Clear path
         if(answers.size()<1) {//Checks to make sure at lease one answer is entered
           alert.setHeaderText("You forgot to add an Answer");
           alert.setContentText("Ooops, please add at least one Answer");
