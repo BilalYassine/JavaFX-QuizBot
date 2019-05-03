@@ -64,7 +64,7 @@ public class GUIHomeController extends Scene
         parent.setBottom(buttons);
         
         
-        // Button Ations
+        // Button Actions
         quizButton.setOnAction(e -> {
           Primary.setScene(sceneList.get(4));
           VBox topicList;
@@ -78,6 +78,7 @@ public class GUIHomeController extends Scene
         });
         loadQuiz.setOnAction(e -> {
           FileSystem.loadFile(Primary);
+          count.setText(table.getNumQuestions() + "");
         });
     }
     

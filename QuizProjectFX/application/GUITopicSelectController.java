@@ -161,7 +161,7 @@ public class GUITopicSelectController extends Scene {
 	      numQuestions = Integer.parseInt(numQuestionsString);
         } catch (NumberFormatException e)
         {
-            Alert alert = new Alert(AlertType.ERROR, "Please enter a valid number of questions");
+            Alert alert = new Alert(AlertType.ERROR, "Please enter the number of questions you would like");
             alert.show();
         }
 	  
