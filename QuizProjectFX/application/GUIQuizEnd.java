@@ -12,10 +12,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 
 public class GUIQuizEnd extends Scene {
 	public Label correct;
+	public Label total;
+	public Label answered;
+	public Label percentage;
 	int[] numCorrect;
     public GUIQuizEnd(Parent root,Stage Primary, List<Scene> sceneList,int[] numCorrect) {
       super(root,800,600);
@@ -32,15 +36,34 @@ public class GUIQuizEnd extends Scene {
       titleBox.setAlignment(Pos.CENTER);
       parent.setTop(titleBox);
       
+      VBox center = new VBox(10);
       
-      HBox center = new HBox(10);
+      HBox correctBox = new HBox(10);
       Label text = new Label("You got ");
       text.setId("subtitle-text");
       correct = new Label(numCorrect[0] + "");
       correct.setId("title-text");
-      Label text2 = new Label(" Correct!");
+      total = new Label(numCorrect[1] + "");
+      total.setId("title-text");
+      Label text2 = new Label(" out of ");
       text2.setId("subtitle-text");
-      center.getChildren().addAll(text,correct,text2);
+      Label text3 = new Label(" correct!");
+      text3.setId("subtitle-text");
+      correctBox.getChildren().addAll(text,correct,text2,total,text3);
+      correctBox.setAlignment(Pos.CENTER);
+      
+      HBox answeredBox = new HBox(10);
+      Label answeredText1 = new Label("You answered ");
+      answeredText1.setId("subtitle-text");
+      answered = new Label(numCorrect[2] + "");
+      answered.setId("title-text");
+      Label answeredText2 = new Label(" Questions");
+      answeredText2.setId("subtitle-text");
+      answeredBox.getChildren().addAll(answeredText1,answered,answeredText2);
+      answeredBox.setAlignment(Pos.CENTER);
+      
+      HBox percent = new HBox(10);
+      center.getChildren().addAll(correctBox,answeredBox);
       center.setAlignment(Pos.CENTER);
       parent.setCenter(center);
       
@@ -52,6 +75,9 @@ public class GUIQuizEnd extends Scene {
     
     public void updateScore() {
     	correct.setText(numCorrect[0] + "");
+    	total.setText(numCorrect[1] + "");
+    	answered.setText(numCorrect[2] +"");
+    	System.out.println(numCorrect[1]);
     }
     
 }

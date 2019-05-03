@@ -40,7 +40,6 @@ public class GUIQuizController extends Scene
     public boolean qAnsweredCorrect = false; // true if the question was answered correctly
     public VBox questionDisplay;
     public Parent root;
-
     /**
      * Constructor for the quiz controller scene. Takes in parameters needed for setting
      * up the scene with the correct information. Uses JavaFX to create different constructs
@@ -143,6 +142,8 @@ public class GUIQuizController extends Scene
         //If no questions left, go to the end page scene
         if(questionNumber == qListFinal.size()) {
           Primary.setScene(sceneList.get(3));
+          System.out.println("questionNumber " +questionNumber);
+          correct[1] = questionNumber;
           ((GUIQuizEnd) sceneList.get(3)).updateScore();
         }
         
@@ -190,7 +191,7 @@ public class GUIQuizController extends Scene
               if(a.correct) {
                 answerButton.setOnAction(e -> { 
                   correct[0]++; // increment the correct answer tracking variable
-                  
+                  correct[2]++; // increment the number of questions answered
                   isCorrect.setText("Correct Answer"); // output to user
                   
                   qAnswered = true; // question has been answered
@@ -203,7 +204,7 @@ public class GUIQuizController extends Scene
               } else {
                 answerButton.setOnAction(e -> { 
                   isCorrect.setText("Wrong Answer!"); // output to user
-                  
+                  correct[2]++; // increment the number of questions answered
                   qAnswered = true; // question has been answered
                   qAnsweredCorrect = false; // question has been answered incorrectly
                   //call method that will display correct answer

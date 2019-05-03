@@ -37,8 +37,10 @@ public class GUIMaster extends Application {
         
         List<Question> qListFinal = new ArrayList<Question>();
         
-        correct = new int[1];
+        correct = new int[3];
         correct[0] = 0;
+        correct[1] = 0;
+        correct[2] = 0;
         
         GUIQuizController GUIQuizController = new GUIQuizController(root2,primaryStage,GUIList,qListFinal, correct);
         GUIList.add(GUIQuizController);
