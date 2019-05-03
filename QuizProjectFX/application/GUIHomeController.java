@@ -22,7 +22,8 @@ public class GUIHomeController extends Scene
         Primary.setTitle("Home");
         BorderPane parent = (BorderPane) root;
         this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
+        
+        //Title of the Home screen
         HBox titleBox = new HBox(10);
         Label title = new Label("Quiz Generator!");
         title.setId("title-text");
@@ -31,23 +32,8 @@ public class GUIHomeController extends Scene
         parent.setCenter(titleBox);
         
         parent.setPadding(new Insets(10, 10, 10, 10));
-        HBox buttons = new HBox(10);
-        buttons.setAlignment(Pos.CENTER);
-        Button quizButton = new Button("Take Quiz");
-        quizButton.setOnAction(e -> {
-        	Primary.setScene(sceneList.get(4));
-        	VBox topicList;
-  		  
-  		  topicList = (((GUITopicSelectController) sceneList.get(4)).updateTopics());        
-  		  ((BorderPane) ((GUITopicSelectController) sceneList.get(4)).root).setTop(topicList);
-        });
-        quizButton.setPrefSize(100, 100);
 
-        Button loadQuiz = new Button("Load Quiz");
-        loadQuiz.setPrefSize(100, 100);
-        loadQuiz.setOnAction(e -> {
-            FileSystem.loadFile(Primary);
-        });
+        //This is for the count of the Questions in the Database
         VBox countVBox = new VBox(10);
         HBox countBox = new HBox(10);
         Button countButton = new Button("Update number of Questions");
@@ -55,10 +41,6 @@ public class GUIHomeController extends Scene
         countText1.setId("answer-text");
         Text count = new Text(table.getNumQuestions()+"");
         count.setId("question-text");
-        countButton.setOnAction(e -> {
-          count.setText(table.getNumQuestions()+"");
-          System.out.println(table.getNumQuestions());
-        });
         Label countText2 = new Label("questions in the Database ");
         countText2.setId("answer-text");
         countBox.getChildren().addAll(countText1,count,countText2);
@@ -66,11 +48,37 @@ public class GUIHomeController extends Scene
         countVBox.getChildren().addAll(countButton,countBox);
         parent.setRight(countVBox);
         
+        HBox buttons = new HBox(10);
+        buttons.setAlignment(Pos.CENTER);
+        Button quizButton = new Button("Take Quiz");
+
+        quizButton.setPrefSize(150, 100);
+
+        Button loadQuiz = new Button("Load Quiz");
+        loadQuiz.setPrefSize(150, 100);
         Button addQuestionButton = new Button("Add Question");
         addQuestionButton.setOnAction(e -> Primary.setScene(sceneList.get(2)));
-        addQuestionButton.setPrefSize(100, 100);
+        addQuestionButton.setPrefSize(150, 100);
 
         buttons.getChildren().addAll(quizButton, loadQuiz, addQuestionButton);
         parent.setBottom(buttons);
+        
+        
+        // Button Ations
+        quizButton.setOnAction(e -> {
+          Primary.setScene(sceneList.get(4));
+          VBox topicList;
+        
+          topicList = (((GUITopicSelectController) sceneList.get(4)).updateTopics());        
+          ((BorderPane) ((GUITopicSelectController) sceneList.get(4)).root).setTop(topicList);
+        });
+        
+        countButton.setOnAction(e -> {
+          count.setText(table.getNumQuestions()+"");
+        });
+        loadQuiz.setOnAction(e -> {
+          FileSystem.loadFile(Primary);
+        });
     }
+    
 }

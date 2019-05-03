@@ -1,11 +1,8 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
-import javafx.application.Application;
-import javafx.beans.property.ObjectProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -40,7 +37,6 @@ public class GUIQuizController extends Scene
     public boolean qAnsweredCorrect = false; // true if the question was answered correctly
     public VBox questionDisplay;
     public Parent root;
-
     /**
      * Constructor for the quiz controller scene. Takes in parameters needed for setting
      * up the scene with the correct information. Uses JavaFX to create different constructs
@@ -133,8 +129,6 @@ public class GUIQuizController extends Scene
      */
     public VBox displayQuestion(Parent root2, Stage Primary, List<Scene> sceneList, int questionNumber, int[] correct)
     {   
-    	System.out.println("I am being run");
-    	System.out.println(qListFinal);
     	
         //Initialize tracking variables
         qAnswered = false; 
@@ -143,6 +137,7 @@ public class GUIQuizController extends Scene
         //If no questions left, go to the end page scene
         if(questionNumber == qListFinal.size()) {
           Primary.setScene(sceneList.get(3));
+          correct[1] = questionNumber;
           ((GUIQuizEnd) sceneList.get(3)).updateScore();
         }
         
@@ -181,6 +176,8 @@ public class GUIQuizController extends Scene
         questionImage.setFitWidth(200);
         questionImage.setPreserveRatio(false);
         System.out.println("Answers num: " + current.answers.size());
+        questionImage.setFitHeight(150);
+        questionImage.setPreserveRatio(true);
         //Loops through all possible answers and puts them into the box
         for(Answer a : current.answers) { 
               //create button with answer text inside for user interaction
@@ -191,7 +188,7 @@ public class GUIQuizController extends Scene
               if(a.correct) {
                 answerButton.setOnAction(e -> { 
                   correct[0]++; // increment the correct answer tracking variable
-                  
+                  correct[2]++; // increment the number of questions answered
                   isCorrect.setText("Correct Answer"); // output to user
                   
                   qAnswered = true; // question has been answered
@@ -204,7 +201,7 @@ public class GUIQuizController extends Scene
               } else {
                 answerButton.setOnAction(e -> { 
                   isCorrect.setText("Wrong Answer!"); // output to user
-                  
+                  correct[2]++; // increment the number of questions answered
                   qAnswered = true; // question has been answered
                   qAnsweredCorrect = false; // question has been answered incorrectly
                   //call method that will display correct answer
@@ -215,7 +212,6 @@ public class GUIQuizController extends Scene
               }
             // add all of the answer buttons to the VBox
             answers.getChildren().addAll(answerButton);
-            System.out.println("Answers" +answers.getChildren().size());
           }
           
         // add all of of the other wanted information to the VBox

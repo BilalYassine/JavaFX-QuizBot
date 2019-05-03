@@ -6,26 +6,17 @@ import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.CheckBoxListCell;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 public class GUITopicSelectController extends Scene {
 	
@@ -146,8 +137,6 @@ public class GUITopicSelectController extends Scene {
 			  maxQuestions += table.getQuestionsList(checkBoxSelected.get(i)).size();
 		  }
 		  questionsLabel.setText("# of Questions (1-"+maxQuestions+ ") : ");
-		  System.out.println("Check");
-		  System.out.println(maxQuestions);
 	  } else {
     	  questionsPicked = false;
     	  if (checkBoxSelected.size()==0) {
@@ -171,7 +160,6 @@ public class GUITopicSelectController extends Scene {
 	  }
 	  if (topicPicked && numQuestions >= 1 && numQuestions <= maxQuestions) {
 		  questionsPicked = true;
-		  //System.out.println("Valid amount of questions!");
 	  }
   }
   
@@ -259,7 +247,6 @@ public class GUITopicSelectController extends Scene {
     		  qList.addAll(table.getQuestionsList(checkBoxSelected.get(i)));
     	  }
 		  
-		  System.out.println("qList : "+qList.size());
 		  
 		  //List<Question> qListFinal = new ArrayList<Question>();
 		  int randNum = 0;
@@ -270,7 +257,6 @@ public class GUITopicSelectController extends Scene {
 			  qList.remove(randNum);
 		  }
 		  
-		  System.out.println(qListFinal);
 		  
 		  // Question & Answer Layout
 		  
@@ -285,8 +271,6 @@ public class GUITopicSelectController extends Scene {
 		  ((GUIQuizController) sceneList.get(1)).questionNumber = 0;
 		  ((GUIQuizController) sceneList.get(1)).correct[0] = 0;
 		  
-		  System.out.println(Primary.getScene().toString());
-		  //System.out.println(sceneList.get(1));
 	  }
   }
 }
