@@ -17,7 +17,7 @@ public class WriteQuestionToJSON
         JSONObject questionObject = new JSONObject();   // Object to write to file
         JSONArray questionArray = new JSONArray();
 
-        for (Question question : GUIMaster.table.getAllQuestions())
+        for (Question question : Main.table.getAllQuestions())
         {
         	System.out.println("Saving");
             

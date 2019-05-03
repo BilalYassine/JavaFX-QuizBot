@@ -13,7 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ButtonBar;
 
-public class GUIMaster extends Application {
+public class Main extends Application {
 
 	public static QuestionTable table;
 	private Stage stage;

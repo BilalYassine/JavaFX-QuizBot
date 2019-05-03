@@ -2,13 +2,10 @@ package application;
 
 
     
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,11 +19,22 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
+/**
+ * GUI Controller Class that displays addQuestion screen and updates the database
+ * with the added questions. 
+ *
+ */
 public class GUIAddQuestionController extends Scene {
     
     private String imagePath = "";
     
+    /**
+     * Initializes Scene children 
+     * @param root
+     * @param Primary
+     * @param sceneList
+     * @param table
+     */
     public GUIAddQuestionController(Parent root,Stage Primary, List<Scene> sceneList, QuestionTable table) {
       super(root,800,600);
       Primary.setTitle("Add Question");
@@ -34,11 +42,10 @@ public class GUIAddQuestionController extends Scene {
       this.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
       
       parent.setPadding(new Insets(10, 10, 10, 10));
-      final FileChooser fileChooser = new FileChooser();
-      fileChooser.setSelectedExtensionFilter(new ExtensionFilter("Images", "jpg", "png", "gif"));
       
       // addImage button action
       Button addImage = new Button("Add Image");
+      
       // This takes in a file from the file chooser
       addImage.setOnAction(e -> {
           imagePath = FileSystem.loadImage(Primary);

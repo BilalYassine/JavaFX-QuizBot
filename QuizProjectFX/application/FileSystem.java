@@ -79,9 +79,8 @@ public class FileSystem
         fileChooser.setTitle("Select Question Image");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir") ) );
         fileChooser.getExtensionFilters().addAll(                               // Adds extension filter options to file chooser
-                new FileChooser.ExtensionFilter("All Files", "*.*"), 
-                new FileChooser.ExtensionFilter("JPG", "*.jpg*"),
-                new FileChooser.ExtensionFilter("PNG", "*.PNG*"));
+                new FileChooser.ExtensionFilter("Images", "*.jpg*", "*.jpeg*", "*.png*", "*.gif*"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
         
         File file = fileChooser.showOpenDialog(stage);
         if (file != null)

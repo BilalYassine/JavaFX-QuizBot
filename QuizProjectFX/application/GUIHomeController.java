@@ -42,7 +42,7 @@ public class GUIHomeController extends Scene
         Button countButton = new Button("Update number of Questions");
         Label countText1 = new Label("There are ");
         countText1.setId("answer-text");
-        count = new Text(GUIMaster.table.getNumQuestions()+"");
+        count = new Text(Main.table.getNumQuestions()+"");
         count.setId("question-text");
         Label countText2 = new Label("questions in the Database ");
         countText2.setId("answer-text");
@@ -93,7 +93,7 @@ public class GUIHomeController extends Scene
      */
     public void updateQuestionCount()
     {
-        int numberOfQuestions = GUIMaster.table.getNumQuestions();
+        int numberOfQuestions = Main.table.getNumQuestions();
         count.setText(numberOfQuestions + "");
         if (numberOfQuestions > 0)
         {

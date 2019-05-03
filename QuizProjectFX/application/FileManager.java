@@ -11,7 +11,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject; 
 import org.json.simple.parser.*;
 
-final class FileManager {
+public class FileManager {
     
     /**
      * Takes in a file path for a json file and builds the appropriate Questions, Answers, and QuestionTable
@@ -59,9 +59,7 @@ final class FileManager {
             
             // Add compiled question to quizTable
             question.setAnswers(answerList);
-            GUIMaster.table.addQuestion(question);
-            System.out.println(GUIMaster.table.getNumQuestions());
-            
+            Main.table.addQuestion(question);
         }
     }
 }
