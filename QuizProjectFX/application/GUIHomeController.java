@@ -16,7 +16,10 @@ import javafx.scene.text.Text;
     
 public class GUIHomeController extends Scene
 {
-    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList,QuestionTable table)
+    private Text count;
+    private Button quizButton;
+    
+    public GUIHomeController(Parent root, Stage Primary, List<Scene> sceneList)
     {
         super(root, 800, 600);
         Primary.setTitle("Home");
@@ -39,7 +42,7 @@ public class GUIHomeController extends Scene
         Button countButton = new Button("Update number of Questions");
         Label countText1 = new Label("There are ");
         countText1.setId("answer-text");
-        Text count = new Text(table.getNumQuestions()+"");
+        count = new Text(GUIMaster.table.getNumQuestions()+"");
         count.setId("question-text");
         Label countText2 = new Label("questions in the Database ");
         countText2.setId("answer-text");
@@ -50,8 +53,8 @@ public class GUIHomeController extends Scene
         
         HBox buttons = new HBox(10);
         buttons.setAlignment(Pos.CENTER);
-        Button quizButton = new Button("Take Quiz");
-
+        quizButton = new Button("Take Quiz");
+        quizButton.setDisable(true);            // Initially have button disabled
         quizButton.setPrefSize(150, 100);
 
         Button loadQuiz = new Button("Load Quiz");
@@ -74,12 +77,31 @@ public class GUIHomeController extends Scene
         });
         
         countButton.setOnAction(e -> {
-          count.setText(table.getNumQuestions()+"");
+          updateQuestionCount();
         });
         loadQuiz.setOnAction(e -> {
           FileSystem.loadFile(Primary);
-          count.setText(table.getNumQuestions() + "");
+          updateQuestionCount();
         });
+    }
+    
+    /**
+     * Updates the the Text object to display the number of questions in the database
+     * Also checks and enables the takeQuiz button when there is at least 1 question in database
+     * @param count     display text to update
+     * @param quizButton
+     */
+    public void updateQuestionCount()
+    {
+        int numberOfQuestions = GUIMaster.table.getNumQuestions();
+        count.setText(numberOfQuestions + "");
+        if (numberOfQuestions > 0)
+        {
+            quizButton.setDisable(false);               // Enables quiz button 
+        } else
+        {
+            quizButton.setDisable(true);
+        }
     }
     
 }

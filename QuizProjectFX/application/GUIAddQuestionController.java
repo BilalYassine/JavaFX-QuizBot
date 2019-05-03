@@ -209,6 +209,8 @@ public class GUIAddQuestionController extends Scene {
         answerText4.clear();
         answerText5.clear();
         table.addQuestion(q);
+        GUIHomeController homeController = (GUIHomeController) sceneList.get(0);
+        homeController.updateQuestionCount();
       });    
   }
 }
