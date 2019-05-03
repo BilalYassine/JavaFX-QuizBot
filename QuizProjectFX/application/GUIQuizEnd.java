@@ -2,6 +2,7 @@ package application;
 
 
     
+import java.text.DecimalFormat;
 import java.util.List;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -87,9 +88,8 @@ public class GUIQuizEnd extends Scene {
     	answered.setText(numCorrect[2] +"");
     	numCorrect[2] = 0;
     	double percent =((double)numCorrect[0])/numCorrect[1];
-    	percent = percent*100;
-    	Math.round(percent);
-    	percentage.setText(percent+"");
+    	DecimalFormat df = new DecimalFormat("###.##");
+    	percentage.setText(df.format(percent));
     }
     
 }
