@@ -54,7 +54,7 @@ public class GUIHomeController extends Scene
         HBox buttons = new HBox(10);
         buttons.setAlignment(Pos.CENTER);
         quizButton = new Button("Take Quiz");
-        quizButton.setDisable(true);            // Initially have button disabled
+        quizButton.setDisable(true);            // Initially have button disabled, set to false when debugging
         quizButton.setPrefSize(150, 100);
 
         Button loadQuiz = new Button("Load Quiz");

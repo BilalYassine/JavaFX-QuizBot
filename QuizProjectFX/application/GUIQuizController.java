@@ -139,6 +139,7 @@ public class GUIQuizController extends Scene
           Primary.setScene(sceneList.get(3));
           correct[1] = questionNumber;
           ((GUIQuizEnd) sceneList.get(3)).updateScore();
+          return null;
         }
         
         //get the current question from the list

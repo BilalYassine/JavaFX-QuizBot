@@ -253,9 +253,10 @@ public class GUITopicSelectController extends Scene {
 		  //Generate random questions
 		  //Get a list of total questions
 		  List<Question> qList = new ArrayList<Question>();
-		  for (int i=0; i<checkBoxSelected.size(); i++) {
-    		  qList.addAll(table.getQuestionsList(checkBoxSelected.get(i)));
-    	  }
+		  for (int i=0; i<checkBoxSelected.size(); i++) 
+		  {
+    		      qList.addAll(table.getQuestionsList(checkBoxSelected.get(i)));
+    	          }
 		  
 		  
 		  //List<Question> qListFinal = new ArrayList<Question>();
@@ -269,11 +270,13 @@ public class GUITopicSelectController extends Scene {
 		  
 		  
 		  // Question & Answer Layout
-		  
-		  int[] yuh = new int[1];
-		  yuh[0] = 0;
-		  
 		  Primary.setScene(sceneList.get(1));
+		  
+		  // Reset these to false for next time the quiz is started
+		  questionsPicked = false; 
+		  maxQuestions = 0;
+		  topicPicked = false;
+		  
 		  VBox questionDisplay;
 		  
 		  questionDisplay = (((GUIQuizController) sceneList.get(1)).displayQuestion(((GUIQuizController)sceneList.get(1)).root, Primary, sceneList, 0, ((GUIQuizController)sceneList.get(1)).correct));        
