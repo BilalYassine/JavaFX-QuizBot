@@ -10,10 +10,12 @@ import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -154,7 +156,15 @@ public class GUITopicSelectController extends Scene {
   
   private void pickQuestion() {
 	  String numQuestionsString = (String) questionsText.getText();
-	  numQuestions = Integer.parseInt(numQuestionsString);
+	  try
+        {
+	      numQuestions = Integer.parseInt(numQuestionsString);
+        } catch (NumberFormatException e)
+        {
+            Alert alert = new Alert(AlertType.ERROR, "Please enter a valid number of questions");
+            alert.show();
+        }
+	  
 	  if (numQuestions > maxQuestions) {
 		  numQuestions = maxQuestions;
 	  }
