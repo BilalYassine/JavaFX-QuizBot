@@ -3,7 +3,6 @@ package application;
 
     
 import java.util.List;
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
