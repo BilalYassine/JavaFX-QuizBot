@@ -41,7 +41,7 @@ public class GUIAddQuestionController extends Scene {
       addImage.setOnAction(e -> {
         File file = fileChooser.showOpenDialog(Primary);
         if (file != null) {
-            image.set(0, file.getAbsolutePath());
+            image.set(0, file.getName());
         }
       });
       parent.setRight(addImage);
@@ -186,7 +186,7 @@ public class GUIAddQuestionController extends Scene {
           else
             answers.add(new Answer(answerText5.getText(),false));
         }
-          q.setImage(image.get(0));
+          q.setImage(image.get(0), false);
         if(answers.size()<1) {//Checks to make sure at lease one answer is entered
           alert.setHeaderText("You forgot to add an Answer");
           alert.setContentText("Ooops, please add at least one Answer");

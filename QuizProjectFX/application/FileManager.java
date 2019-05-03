@@ -45,7 +45,7 @@ final class FileManager {
             question.setMetaData((String) jQ.get("meta-data"));
             question.setQuestion((String) jQ.get("questionText"));
             question.setQuestionTopic((String) jQ.get("topic"));
-            question.setImage((String) jQ.get("meta-data"));
+            question.setImage((String) jQ.get("image"), true);
             
             JSONArray choices = (JSONArray) jQ.get("choiceArray");
             

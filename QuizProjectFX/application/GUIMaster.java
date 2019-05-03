@@ -95,14 +95,16 @@ public class GUIMaster extends Application {
 	
 	public static void main(String[] args) {
 		table = new QuestionTable();
-		List<Answer> yo = new ArrayList<Answer>();
+		/*List<Answer> yo = new ArrayList<Answer>();
 		yo.add(new Answer("1", false));
 		yo.add(new Answer("2", true));
 		table.addQuestion(new Question("What is life","Important", "fdasf", "pp.png", yo));
 		yo = new ArrayList<Answer>();
 		yo.add(new Answer("bread", false));
 		yo.add(new Answer("cheese", true));
-		table.addQuestion(new Question("What did you eat for breakfast","Important", "fdasf", "pp.png", yo));
+		table.addQuestion(new Question("What did you eat for breakfast","Important", "fdasf", "pp.png", yo));*/
+		
+		System.out.println(table.getAllQuestions());
 		
 		launch(args);
 	}

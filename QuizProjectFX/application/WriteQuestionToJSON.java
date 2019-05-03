@@ -19,6 +19,7 @@ public class WriteQuestionToJSON
 
         for (Question question : GUIMaster.table.getAllQuestions())
         {
+        	System.out.println("Saving");
             
             JSONArray choiceArray = new JSONArray();
             ArrayList<Answer> answerArrayList = new ArrayList<>();
@@ -27,20 +28,23 @@ public class WriteQuestionToJSON
             // Loop to iterate answer ArrayList for the appropriate answers
             for (int i = 0; i < answerArrayList.size(); i++)
             {
-                if (i % 2 == 0)
-                {
+                //if (i % 2 == 0)
+                //{
                     JSONObject choiceArrayAnswer = new JSONObject();
-                    choiceArrayAnswer.put(answerArrayList.get(i), "");
-                    choiceArrayAnswer.put(answerArrayList.get(i + 1), "");
+                    if (answerArrayList.get(i).correct) 
+                    	choiceArrayAnswer.put("isCorrect", "T");
+                    else
+                    	choiceArrayAnswer.put("isCorrect", "F");
+                    choiceArrayAnswer.put("choice", answerArrayList.get(i).answerText);
                     choiceArray.add(choiceArrayAnswer);
-                }
+                //}
             }
 
             // Creating JSONObject
             JSONObject questionDetails = new JSONObject();
             questionDetails.put("questionText", question.questionText);
             questionDetails.put("meta-data", question.metaData);
-            questionDetails.put("image", question.questionImage);
+            questionDetails.put("image", question.getImageFileName());
             questionDetails.put("topic", question.topic);
             questionDetails.put("choiceArray", choiceArray);
 

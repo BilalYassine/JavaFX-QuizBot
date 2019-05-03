@@ -177,8 +177,9 @@ public class GUIQuizController extends Scene
         
         //}
         
-        questionImage.setFitHeight(150);
-        questionImage.setPreserveRatio(true);
+        questionImage.setFitHeight(200);
+        questionImage.setFitWidth(200);
+        questionImage.setPreserveRatio(false);
         System.out.println("Answers num: " + current.answers.size());
         //Loops through all possible answers and puts them into the box
         for(Answer a : current.answers) { 

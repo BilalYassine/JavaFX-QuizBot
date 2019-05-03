@@ -23,6 +23,7 @@ public class Question {
   ImageView questionImage;
   public List<Answer> answers;
   String[] inputAnswers;
+  String path;
   
   /**
    * Default constructor that takes in an array
@@ -43,7 +44,7 @@ public class Question {
 	    metaData = m;
 	    topic = t;
 	    questionImage = null;
-	    setImage(i);
+	    setImage(i, false);
 	    //inputAnswers = inputAns;
 	    setAnswers(a);
 	    //answers = new ArrayList<Answer>();   
@@ -97,11 +98,14 @@ public class Question {
    * usable images from it.
    * @param imageFileName: name of file from JSON
    */
-  public void setImage(String imageFileName) {
-    String path = "" + imageFileName;
+  public void setImage(String imageFileName, Boolean jsonRead) {
+	if (!jsonRead)
+		path = ("images\\" + imageFileName);
+	else 
+		path = (imageFileName);
     try
     {
-        Image imageSet = new Image(imageFileName); // create image instance
+        Image imageSet = new Image(path); // create image instance
         this.questionImage = new ImageView(imageSet); // converts it for use in JavaFX
     } catch (Exception e)
     {
@@ -110,6 +114,13 @@ public class Question {
         this.questionImage = new ImageView(imageSet);
     }
     
+  }
+  
+  public String getImageFileName() {
+	  if (path == null) {
+		  return "none";
+	  }
+	  return path;
   }
   
   public void setAnswers(List<Answer> newAnswers) {
