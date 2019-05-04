@@ -87,7 +87,7 @@ public class GUIQuizEnd extends Scene {
     	total.setText(numCorrect[1] + "");
     	answered.setText(numCorrect[2] +"");
     	numCorrect[2] = 0;
-    	double percent =((double)numCorrect[0])/numCorrect[1];
+    	double percent =((double)numCorrect[0])/numCorrect[1] * 100;
     	DecimalFormat df = new DecimalFormat("###.##");
     	percentage.setText(df.format(percent));
     }
